@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class Ben {
-    public static final String name = "Ben";
+    private static final String name = "Ben";
     private static String[] list = new String[100];
     private static int listLength = 0;
 
     // Utility function to print line
-    public static void PrintLine() {
+    private static void PrintLine() {
         final String line = "____________________________________________________________";
         System.out.println(line);
     }
