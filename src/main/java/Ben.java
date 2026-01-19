@@ -2,11 +2,26 @@ import java.util.*;
 
 public class Ben {
     public static final String name = "Ben";
+    private static String[] list = new String[100];
+    private static int listLength = 0;
 
     // Utility function to print line
     public static void PrintLine() {
         final String line = "____________________________________________________________";
         System.out.println(line);
+    }
+
+    // Utility function to add members to the list
+    private static void AddElement(String Element) {
+        list[listLength] = Element;
+        listLength++;
+    }
+
+    // Utility function to list all members of the list
+    private static void PrintElements() {
+        for (int index = 0; index < listLength; index++) {
+            System.out.println(list[index]);
+        }
     }
 
     public static void main(String[] args) {
