@@ -1,26 +1,26 @@
 import java.util.*;
 
 public class Ben {
-    private static final String name = "Ben";
-    private static String[] list = new String[100];
-    private static int listLength = 0;
+    private static final String NAME = "Ben";
+    private static final String LINE = "____________________________________________________________";
+    private static String[] strings = new String[100];
+    private static int stringsLength = 0;
 
     // Utility function to print line
-    private static void PrintLine() {
-        final String line = "____________________________________________________________";
-        System.out.println(line);
+    private static void printLine() {
+        System.out.println(LINE);
     }
 
     // Utility function to add members to the list
-    private static void AddElement(String Element) {
-        list[listLength] = Element;
-        listLength++;
+    private static void addElement(String Element) {
+        strings[stringsLength] = Element;
+        stringsLength++;
     }
 
     // Utility function to list all members of the list
-    private static void PrintElements() {
-        for (int index = 0; index < listLength; index++) {
-            System.out.println(list[index]);
+    private static void printElements() {
+        for (int index = 0; index < stringsLength; index++) {
+            System.out.println(strings[index]);
         }
     }
 
@@ -32,12 +32,12 @@ public class Ben {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        PrintLine();
+        printLine();
 
-        System.out.println("Hello! I'm " + name);
+        System.out.println("Hello! I'm " + NAME);
         System.out.println("What can I do for you?");
 
-        PrintLine();
+        printLine();
 
         // Initialize Scanner
         Scanner scanner = new Scanner(System.in);
@@ -45,20 +45,20 @@ public class Ben {
         // Perform task
         while (true) {
             String input = scanner.nextLine();
-            PrintLine();
+            printLine();
             if (input.equals("bye")) {
                 // Exit from loop
                 break;
             } else {
                 // Echo user input
                 System.out.println(input);
-                PrintLine();
+                printLine();
             }
         }
 
         // Exit dialogue
         System.out.println("Bye. Hope to see you again soon!");
 
-        PrintLine();
+        printLine();
     }
 }
