@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Ben {
     public static final String name = "Ben";
 
@@ -20,9 +22,24 @@ public class Ben {
         System.out.println("Hello! I'm " + name);
         System.out.println("What can I do for you?");
 
-        // Perform tasks
-
         PrintLine();
+
+        // Initialize Scanner
+        Scanner scanner = new Scanner(System.in);
+
+        // Perform task
+        while (true) {
+            String input = scanner.nextLine();
+            PrintLine();
+            if (input.equals("bye")) {
+                // Exit from loop
+                break;
+            } else {
+                // Echo user input
+                System.out.println(input);
+                PrintLine();
+            }
+        }
 
         // Exit dialogue
         System.out.println("Bye. Hope to see you again soon!");
