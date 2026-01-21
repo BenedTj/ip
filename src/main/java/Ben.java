@@ -1,3 +1,4 @@
+import ben.task.Deadline;
 import ben.task.Task;
 import ben.task.Todo;
 
@@ -150,6 +151,39 @@ public class Ben {
 
                 // Print confirmation message
                 printTaskAdditionMessage(todoTask);
+            } else if (command.equals("deadline")) {
+                Integer byIndex = null;
+
+                // Obtain the description of the Deadline task
+                StringBuilder deadlineDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                for (int i = 2; i < commandParametersLength; i++) {
+                    // Stop once "/by" is encountered
+                    if (commandParameters[i].equals("/by")) {
+                        byIndex = i;
+                        break;
+                    }
+
+                    deadlineDescriptionBuilder.append(" ");
+                    deadlineDescriptionBuilder.append(commandParameters[i]);
+                }
+                String deadlineDescription = deadlineDescriptionBuilder.toString();
+
+                // Obtain the deadline of the Deadline task
+                StringBuilder deadlineByBuilder = new StringBuilder(commandParameters[byIndex + 1]);
+                for (int i = byIndex + 2; i < commandParametersLength; i++) {
+                    deadlineByBuilder.append(" ");
+                    deadlineByBuilder.append(commandParameters[i]);
+                }
+                String deadlineBy = deadlineByBuilder.toString();
+
+                // Create Deadline task
+                Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
+
+                // Add to array tasks
+                addTask(deadlineTask);
+
+                // Print confirmation message
+                printTaskAdditionMessage(deadlineTask);
             } else {
                 Task newTask = new Task(command);
 
