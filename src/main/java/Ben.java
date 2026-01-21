@@ -16,19 +16,19 @@ public class Ben {
     }
 
     /**
-     * Adds a member to the list tasks and increments tasksLength
+     * Adds a member to the array tasks and increments tasksLength
      *
-     * @param Element member to add to the list tasks
+     * @param task task to add to the array tasks
      */
-    private static void addElement(Task Element) {
-        tasks[tasksLength] = Element;
+    private static void addTask(Task task) {
+        tasks[tasksLength] = task;
         tasksLength++;
     }
 
     /**
-     * Prints all members of the list tasks
+     * Prints all members of the array tasks
      */
-    private static void printElements() {
+    private static void printTasks() {
         for (int index = 0; index < tasksLength; index++) {
             int currentIndex = index + 1;
             System.out.println(currentIndex + ". " + tasks[index]);
@@ -43,7 +43,7 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      */
-    private static void markAndPrintElementDone(int indexNumber) {
+    private static void markAndPrintTaskDone(int indexNumber) {
         // Obtain index
         int index = indexNumber - 1;
 
@@ -63,7 +63,7 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      */
-    private static void markAndPrintElementUndone(int indexNumber) {
+    private static void markAndPrintTaskUndone(int indexNumber) {
         // Obtain index
         int index = indexNumber - 1;
 
@@ -109,20 +109,20 @@ public class Ben {
                 break;
             } else if (command.equals("list")) {
                 // List all elements
-                printElements();
+                printTasks();
             } else if (command.equals("mark")) {
                 // Obtain indexNumber and mark done
                 int indexNumber = Integer.parseInt(commandParameters[1]);
-                markAndPrintElementDone(indexNumber);
+                markAndPrintTaskDone(indexNumber);
             } else if (command.equals("unmark")) {
                 // Obtain indexNumber and mark not done
                 int indexNumber = Integer.parseInt(commandParameters[1]);
-                markAndPrintElementUndone(indexNumber);
+                markAndPrintTaskUndone(indexNumber);
             } else {
                 Task newTask = new Task(command);
 
-                // Add to list
-                addElement(newTask);
+                // Add to array tasks
+                addTask(newTask);
                 System.out.println("added: " + input);
             }
 
