@@ -31,7 +31,7 @@ public class Ben {
     private static void printTasks() {
         for (int index = 0; index < tasksLength; index++) {
             int currentIndex = index + 1;
-            System.out.println(currentIndex + ". " + tasks[index]);
+            System.out.println(currentIndex + "." + tasks[index]);
         }
     }
 
@@ -48,7 +48,7 @@ public class Ben {
         int index = indexNumber - 1;
 
         // Set the element as done
-        tasks[index].setIsDone(true);
+        tasks[index].markAsDone();
 
         // Print message to confirm
         System.out.println("Nice! I've marked this task as done:");
@@ -68,7 +68,7 @@ public class Ben {
         int index = indexNumber - 1;
 
         // Set the element as not done
-        tasks[index].setIsDone(false);
+        tasks[index].markAsUndone();
 
         // Print message to confirm
         System.out.println("Ok, I've marked this task as not done yet:");
