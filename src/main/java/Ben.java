@@ -58,11 +58,16 @@ public class Ben {
             if (input.equals("bye")) {
                 // Exit from loop
                 break;
+            } else if (input.equals("list")) {
+                // List all elements
+                printElements();
             } else {
-                // Echo user input
-                System.out.println(input);
-                printLine();
+                // Add to list
+                addElement(input);
+                System.out.println("added: " + input);
             }
+
+            printLine();
         }
 
         // Exit dialogue
