@@ -1,3 +1,4 @@
+import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
@@ -143,6 +144,11 @@ public class Ben {
                     int indexNumber = Integer.parseInt(commandParameters[1]);
                     markAndPrintTaskUndone(indexNumber);
                 } else if (command.equals("todo")) {
+                    // Throw an exception if there is no description
+                    if (commandParametersLength <= 1) {
+                        throw new BenEmptyParameterValueException("description", "todo");
+                    }
+
                     // Obtain the description of the Todo task
                     StringBuilder todoDescriptionBuilder = new StringBuilder(commandParameters[1]);
                     for (int i = 2; i < commandParametersLength; i++) {
