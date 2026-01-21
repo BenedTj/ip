@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Ben {
     private static final String NAME = "Ben";
