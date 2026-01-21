@@ -6,18 +6,26 @@ public class Ben {
     private static String[] strings = new String[100];
     private static int stringsLength = 0;
 
-    // Utility function to print line
+    /**
+     * Prints a line.
+     */
     private static void printLine() {
         System.out.println(LINE);
     }
 
-    // Utility function to add members to the list
+    /**
+     * Adds a member to the list strings and increments stringsLength
+     *
+     * @param Element member to add to the list strings
+     */
     private static void addElement(String Element) {
         strings[stringsLength] = Element;
         stringsLength++;
     }
 
-    // Utility function to list all members of the list
+    /**
+     * Prints all members of the list strings
+     */
     private static void printElements() {
         for (int index = 0; index < stringsLength; index++) {
             System.out.println(strings[index]);
