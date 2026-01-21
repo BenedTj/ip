@@ -85,6 +85,7 @@ public class Ben {
 
         printLine();
 
+        // Greet dialogue
         System.out.println("Hello! I'm " + NAME);
         System.out.println("What can I do for you?");
 
