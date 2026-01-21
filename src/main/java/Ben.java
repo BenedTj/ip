@@ -1,5 +1,6 @@
 import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenException;
+import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenInvalidCommandException;
 import ben.exception.BenInvalidParameterException;
 import ben.exception.BenMarkAlreadyDoneException;
@@ -140,16 +141,34 @@ public class Ben {
                     printTasks();
                 } else if (command.equals("mark")) {
                     try {
-                        // Obtain indexNumber and mark done
+                        // Obtain indexNumber
                         int indexNumber = Integer.parseInt(commandParameters[1]);
+
+                        /* If indexNumber is outside of the length of commandParameters,
+                           throw an exception
+                         */
+                        if (indexNumber > tasksLength) {
+                            throw new BenIndexOutOfRangeException(indexNumber);
+                        }
+
+                        // Mark done
                         markAndPrintTaskDone(indexNumber);
                     } catch (NumberFormatException e) {
                         throw new BenInvalidParameterException(commandParameters[1]);
                     }
                 } else if (command.equals("unmark")) {
                     try {
-                        // Obtain indexNumber and mark not done
+                        // Obtain indexNumber
                         int indexNumber = Integer.parseInt(commandParameters[1]);
+
+                        /* If indexNumber is outside of the length of commandParameters,
+                           throw an exception
+                         */
+                        if (indexNumber > tasksLength) {
+                            throw new BenIndexOutOfRangeException(indexNumber);
+                        }
+
+                        // Mark not done
                         markAndPrintTaskUndone(indexNumber);
                     } catch (NumberFormatException e) {
                         throw new BenInvalidParameterException(commandParameters[1]);
