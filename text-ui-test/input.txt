@@ -1,6 +1,7 @@
 bah
 todo
 todo borrow book
+mark 103
 list
 deadline
 deadline return book /by Sunday
@@ -27,10 +28,12 @@ unmark 2
 list
 mark 3
 unmark 2
+unmark 87
 list
 mark 4
 list
 unmark 3
+mark 29
 list
 unmark 4
 list
