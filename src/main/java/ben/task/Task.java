@@ -9,7 +9,7 @@ public class Task {
      * Initializes a Task object with the description and a "false" value
      * on isDone
      *
-     * @param description
+     * @param description text description of the task
      */
     public Task(String description) {
         this.description = description;
