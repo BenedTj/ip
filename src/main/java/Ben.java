@@ -1,5 +1,6 @@
 import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenException;
+import ben.exception.BenInvalidParameterException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 import ben.exception.BenMissingParameterException;
@@ -137,13 +138,21 @@ public class Ben {
                     // List all elements
                     printTasks();
                 } else if (command.equals("mark")) {
-                    // Obtain indexNumber and mark done
-                    int indexNumber = Integer.parseInt(commandParameters[1]);
-                    markAndPrintTaskDone(indexNumber);
+                    try {
+                        // Obtain indexNumber and mark done
+                        int indexNumber = Integer.parseInt(commandParameters[1]);
+                        markAndPrintTaskDone(indexNumber);
+                    } catch (NumberFormatException e) {
+                        throw new BenInvalidParameterException(commandParameters[1]);
+                    }
                 } else if (command.equals("unmark")) {
-                    // Obtain indexNumber and mark not done
-                    int indexNumber = Integer.parseInt(commandParameters[1]);
-                    markAndPrintTaskUndone(indexNumber);
+                    try {
+                        // Obtain indexNumber and mark not done
+                        int indexNumber = Integer.parseInt(commandParameters[1]);
+                        markAndPrintTaskUndone(indexNumber);
+                    } catch (NumberFormatException e) {
+                        throw new BenInvalidParameterException(commandParameters[1]);
+                    }
                 } else if (command.equals("todo")) {
                     // Throw an exception if there is no description
                     if (commandParametersLength <= 1) {
