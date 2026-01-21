@@ -1,4 +1,5 @@
 import ben.task.Task;
+import ben.task.Todo;
 
 import java.util.Scanner;
 
@@ -33,6 +34,18 @@ public class Ben {
             int currentIndex = index + 1;
             System.out.println(currentIndex + "." + tasks[index]);
         }
+    }
+
+    /**
+     * Print a confirmation message for adding the task to
+     * the array tasks
+     *
+     * @param task the Task object that has been added
+     */
+    private static void printTaskAdditionMessage(Task task) {
+        System.out.println("Got it. I've added this task:");
+        System.out.println("  " + task);
+        System.out.println("Now you have " + tasksLength + " tasks in the list.");
     }
 
     /**
@@ -100,6 +113,7 @@ public class Ben {
 
             // Split input into commands and parameters
             String[] commandParameters = input.split(" ");
+            int commandParametersLength = commandParameters.length;
 
             String command = commandParameters[0];
 
@@ -119,6 +133,23 @@ public class Ben {
                 // Obtain indexNumber and mark not done
                 int indexNumber = Integer.parseInt(commandParameters[1]);
                 markAndPrintTaskUndone(indexNumber);
+            } else if (command.equals("todo")) {
+                // Obtain the description of the Todo task
+                StringBuilder todoDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                for (int i = 2; i < commandParametersLength; i++) {
+                    todoDescriptionBuilder.append(" ");
+                    todoDescriptionBuilder.append(commandParameters[i]);
+                }
+                String todoDescription = todoDescriptionBuilder.toString();
+
+                // Create Todo task
+                Task todoTask = new Todo(todoDescription);
+
+                // Add to array tasks
+                addTask(todoTask);
+
+                // Print confirmation message
+                printTaskAdditionMessage(todoTask);
             } else {
                 Task newTask = new Task(command);
 
