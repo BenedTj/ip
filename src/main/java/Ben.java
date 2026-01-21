@@ -1,3 +1,4 @@
+import ben.exception.BenException;
 import ben.task.Deadline;
 import ben.task.Event;
 import ben.task.Task;
@@ -122,124 +123,128 @@ public class Ben {
 
             printLine();
 
-            if (command.equals("bye")) {
-                // Exit from loop
-                break;
-            } else if (command.equals("list")) {
-                // List all elements
-                printTasks();
-            } else if (command.equals("mark")) {
-                // Obtain indexNumber and mark done
-                int indexNumber = Integer.parseInt(commandParameters[1]);
-                markAndPrintTaskDone(indexNumber);
-            } else if (command.equals("unmark")) {
-                // Obtain indexNumber and mark not done
-                int indexNumber = Integer.parseInt(commandParameters[1]);
-                markAndPrintTaskUndone(indexNumber);
-            } else if (command.equals("todo")) {
-                // Obtain the description of the Todo task
-                StringBuilder todoDescriptionBuilder = new StringBuilder(commandParameters[1]);
-                for (int i = 2; i < commandParametersLength; i++) {
-                    todoDescriptionBuilder.append(" ");
-                    todoDescriptionBuilder.append(commandParameters[i]);
-                }
-                String todoDescription = todoDescriptionBuilder.toString();
-
-                // Create Todo task
-                Task todoTask = new Todo(todoDescription);
-
-                // Add to array tasks
-                addTask(todoTask);
-
-                // Print confirmation message
-                printTaskAdditionMessage(todoTask);
-            } else if (command.equals("deadline")) {
-                Integer byIndex = null;
-
-                // Obtain the description of the Deadline task
-                StringBuilder deadlineDescriptionBuilder = new StringBuilder(commandParameters[1]);
-                for (int i = 2; i < commandParametersLength; i++) {
-                    // Stop once "/by" is encountered
-                    if (commandParameters[i].equals("/by")) {
-                        byIndex = i;
-                        break;
+            try {
+                if (command.equals("bye")) {
+                    // Exit from loop
+                    break;
+                } else if (command.equals("list")) {
+                    // List all elements
+                    printTasks();
+                } else if (command.equals("mark")) {
+                    // Obtain indexNumber and mark done
+                    int indexNumber = Integer.parseInt(commandParameters[1]);
+                    markAndPrintTaskDone(indexNumber);
+                } else if (command.equals("unmark")) {
+                    // Obtain indexNumber and mark not done
+                    int indexNumber = Integer.parseInt(commandParameters[1]);
+                    markAndPrintTaskUndone(indexNumber);
+                } else if (command.equals("todo")) {
+                    // Obtain the description of the Todo task
+                    StringBuilder todoDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                    for (int i = 2; i < commandParametersLength; i++) {
+                        todoDescriptionBuilder.append(" ");
+                        todoDescriptionBuilder.append(commandParameters[i]);
                     }
+                    String todoDescription = todoDescriptionBuilder.toString();
 
-                    deadlineDescriptionBuilder.append(" ");
-                    deadlineDescriptionBuilder.append(commandParameters[i]);
-                }
-                String deadlineDescription = deadlineDescriptionBuilder.toString();
+                    // Create Todo task
+                    Task todoTask = new Todo(todoDescription);
 
-                // Obtain the deadline of the Deadline task
-                StringBuilder deadlineByBuilder = new StringBuilder(commandParameters[byIndex + 1]);
-                for (int i = byIndex + 2; i < commandParametersLength; i++) {
-                    deadlineByBuilder.append(" ");
-                    deadlineByBuilder.append(commandParameters[i]);
-                }
-                String deadlineBy = deadlineByBuilder.toString();
+                    // Add to array tasks
+                    addTask(todoTask);
 
-                // Create Deadline task
-                Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
+                    // Print confirmation message
+                    printTaskAdditionMessage(todoTask);
+                } else if (command.equals("deadline")) {
+                    Integer byIndex = null;
 
-                // Add to array tasks
-                addTask(deadlineTask);
+                    // Obtain the description of the Deadline task
+                    StringBuilder deadlineDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                    for (int i = 2; i < commandParametersLength; i++) {
+                        // Stop once "/by" is encountered
+                        if (commandParameters[i].equals("/by")) {
+                            byIndex = i;
+                            break;
+                        }
 
-                // Print confirmation message
-                printTaskAdditionMessage(deadlineTask);
-            } else if (command.equals("event")) {
-                Integer fromIndex = null;
-                Integer toIndex = null;
-
-                // Obtain the description of the Event task
-                StringBuilder eventDescriptionBuilder = new StringBuilder(commandParameters[1]);
-                for (int i = 2; i < commandParametersLength; i++) {
-                    // Stop once "/from" is encountered
-                    if (commandParameters[i].equals("/from")) {
-                        fromIndex = i;
-                        break;
+                        deadlineDescriptionBuilder.append(" ");
+                        deadlineDescriptionBuilder.append(commandParameters[i]);
                     }
+                    String deadlineDescription = deadlineDescriptionBuilder.toString();
 
-                    eventDescriptionBuilder.append(" ");
-                    eventDescriptionBuilder.append(commandParameters[i]);
-                }
-                String eventDescription = eventDescriptionBuilder.toString();
-
-                // Obtain the to date/time of the Event task
-                StringBuilder eventFromBuilder = new StringBuilder(commandParameters[fromIndex + 1]);
-                for (int i = fromIndex + 2; i < commandParametersLength; i++) {
-                    // Stop once "/end" is encountered
-                    if (commandParameters[i].equals("/to")) {
-                        toIndex = i;
-                        break;
+                    // Obtain the deadline of the Deadline task
+                    StringBuilder deadlineByBuilder = new StringBuilder(commandParameters[byIndex + 1]);
+                    for (int i = byIndex + 2; i < commandParametersLength; i++) {
+                        deadlineByBuilder.append(" ");
+                        deadlineByBuilder.append(commandParameters[i]);
                     }
+                    String deadlineBy = deadlineByBuilder.toString();
 
-                    eventFromBuilder.append(" ");
-                    eventFromBuilder.append(commandParameters[i]);
+                    // Create Deadline task
+                    Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
+
+                    // Add to array tasks
+                    addTask(deadlineTask);
+
+                    // Print confirmation message
+                    printTaskAdditionMessage(deadlineTask);
+                } else if (command.equals("event")) {
+                    Integer fromIndex = null;
+                    Integer toIndex = null;
+
+                    // Obtain the description of the Event task
+                    StringBuilder eventDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                    for (int i = 2; i < commandParametersLength; i++) {
+                        // Stop once "/from" is encountered
+                        if (commandParameters[i].equals("/from")) {
+                            fromIndex = i;
+                            break;
+                        }
+
+                        eventDescriptionBuilder.append(" ");
+                        eventDescriptionBuilder.append(commandParameters[i]);
+                    }
+                    String eventDescription = eventDescriptionBuilder.toString();
+
+                    // Obtain the to date/time of the Event task
+                    StringBuilder eventFromBuilder = new StringBuilder(commandParameters[fromIndex + 1]);
+                    for (int i = fromIndex + 2; i < commandParametersLength; i++) {
+                        // Stop once "/end" is encountered
+                        if (commandParameters[i].equals("/to")) {
+                            toIndex = i;
+                            break;
+                        }
+
+                        eventFromBuilder.append(" ");
+                        eventFromBuilder.append(commandParameters[i]);
+                    }
+                    String eventFrom = eventFromBuilder.toString();
+
+                    // Obtain the end date/time of the Event task
+                    StringBuilder eventToBuilder = new StringBuilder(commandParameters[toIndex + 1]);
+                    for (int i = toIndex + 2; i < commandParametersLength; i++) {
+                        eventToBuilder.append(" ");
+                        eventToBuilder.append(commandParameters[i]);
+                    }
+                    String eventTo = eventToBuilder.toString();
+
+                    // Create Event task
+                    Task eventTask = new Event(eventDescription, eventFrom, eventTo);
+
+                    // Add to array tasks
+                    addTask(eventTask);
+
+                    // Print confirmation message
+                    printTaskAdditionMessage(eventTask);
+                } else {
+                    Task newTask = new Task(command);
+
+                    // Add to array tasks
+                    addTask(newTask);
+                    System.out.println("added: " + input);
                 }
-                String eventFrom = eventFromBuilder.toString();
-
-                // Obtain the end date/time of the Event task
-                StringBuilder eventToBuilder = new StringBuilder(commandParameters[toIndex + 1]);
-                for (int i = toIndex + 2; i < commandParametersLength; i++) {
-                    eventToBuilder.append(" ");
-                    eventToBuilder.append(commandParameters[i]);
-                }
-                String eventTo = eventToBuilder.toString();
-
-                // Create Event task
-                Task eventTask = new Event(eventDescription, eventFrom, eventTo);
-
-                // Add to array tasks
-                addTask(eventTask);
-
-                // Print confirmation message
-                printTaskAdditionMessage(eventTask);
-            } else {
-                Task newTask = new Task(command);
-
-                // Add to array tasks
-                addTask(newTask);
-                System.out.println("added: " + input);
+            } catch (BenException e) {
+                System.out.println(e.toString());
             }
 
             printLine();
