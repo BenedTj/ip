@@ -2,6 +2,7 @@ import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
+import ben.exception.BenMissingParameterException;
 import ben.task.Deadline;
 import ben.task.Event;
 import ben.task.Task;
@@ -166,6 +167,11 @@ public class Ben {
                     // Print confirmation message
                     printTaskAdditionMessage(todoTask);
                 } else if (command.equals("deadline")) {
+                    // Throw an exception if there is no description
+                    if (commandParametersLength <= 1) {
+                        throw new BenEmptyParameterValueException("description", "deadline");
+                    }
+
                     Integer byIndex = null;
 
                     // Obtain the description of the Deadline task
@@ -181,6 +187,16 @@ public class Ben {
                         deadlineDescriptionBuilder.append(commandParameters[i]);
                     }
                     String deadlineDescription = deadlineDescriptionBuilder.toString();
+
+                    // Throw an exception if there is no "/by"
+                    if (byIndex == null) {
+                        throw new BenMissingParameterException("/by");
+                    }
+
+                    // Throw an exception if there is no value for "/by"
+                    if (byIndex + 1 >= commandParametersLength) {
+                        throw new BenEmptyParameterValueException("/by", "deadline");
+                    }
 
                     // Obtain the deadline of the Deadline task
                     StringBuilder deadlineByBuilder = new StringBuilder(commandParameters[byIndex + 1]);
