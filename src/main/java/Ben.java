@@ -11,13 +11,13 @@ import ben.task.Event;
 import ben.task.Task;
 import ben.task.Todo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ben {
     private static final String NAME = "Ben";
     private static final String LINE = "____________________________________________________________";
-    private static Task[] tasks = new Task[100];
-    private static int tasksLength = 0;
+    private static ArrayList<Task> tasks = new ArrayList<>();
 
     /**
      * Prints a line.
@@ -27,23 +27,14 @@ public class Ben {
     }
 
     /**
-     * Adds a member to the array tasks and increments tasksLength
-     *
-     * @param task task to add to the array tasks
-     */
-    private static void addTask(Task task) {
-        tasks[tasksLength] = task;
-        tasksLength++;
-    }
-
-    /**
      * Prints all members of the array tasks
      */
     private static void printTasks() {
         System.out.println("Here are the tasks in your list:");
+        int tasksLength = tasks.size();
         for (int index = 0; index < tasksLength; index++) {
             int currentIndex = index + 1;
-            System.out.println(currentIndex + "." + tasks[index]);
+            System.out.println(currentIndex + "." + tasks.get(index));
         }
     }
 
@@ -56,7 +47,7 @@ public class Ben {
     private static void printTaskAdditionMessage(Task task) {
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + task);
-        System.out.println("Now you have " + tasksLength + " tasks in the list.");
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
     /**
@@ -69,15 +60,16 @@ public class Ben {
      * @throws BenMarkAlreadyDoneException If the task has already been marked as done
      */
     private static void markAndPrintTaskDone(int indexNumber) throws BenMarkAlreadyDoneException {
-        // Obtain index
+        // Obtain index and task
         int index = indexNumber - 1;
+        Task task = tasks.get(index);
 
         // Set the element as done
-        tasks[index].markAsDone();
+        task.markAsDone();
 
         // Print message to confirm
         System.out.println("Nice! I've marked this task as done:");
-        System.out.println("  " + tasks[index].toString());
+        System.out.println("  " + task.toString());
     }
 
     /**
@@ -90,15 +82,16 @@ public class Ben {
      * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
      */
     private static void markAndPrintTaskUndone(int indexNumber) throws BenMarkAlreadyNotDoneException {
-        // Obtain index
+        // Obtain index and task
         int index = indexNumber - 1;
+        Task task = tasks.get(index);
 
         // Set the element as not done
-        tasks[index].markAsUndone();
+        task.markAsUndone();
 
         // Print message to confirm
         System.out.println("Ok, I've marked this task as not done yet:");
-        System.out.println("  " + tasks[index].toString());
+        System.out.println("  " + task.toString());
     }
 
     public static void main(String[] args) {
@@ -147,7 +140,7 @@ public class Ben {
                         /* If indexNumber is outside of the length of commandParameters,
                            throw an exception
                          */
-                        if (indexNumber > tasksLength) {
+                        if (indexNumber > tasks.size()) {
                             throw new BenIndexOutOfRangeException(indexNumber);
                         }
 
@@ -164,7 +157,7 @@ public class Ben {
                         /* If indexNumber is outside of the length of commandParameters,
                            throw an exception
                          */
-                        if (indexNumber > tasksLength) {
+                        if (indexNumber > tasks.size()) {
                             throw new BenIndexOutOfRangeException(indexNumber);
                         }
 
@@ -191,7 +184,7 @@ public class Ben {
                     Task todoTask = new Todo(todoDescription);
 
                     // Add to array tasks
-                    addTask(todoTask);
+                    tasks.add(todoTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(todoTask);
@@ -239,7 +232,7 @@ public class Ben {
                     Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
 
                     // Add to array tasks
-                    addTask(deadlineTask);
+                    tasks.add(deadlineTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(deadlineTask);
@@ -313,7 +306,7 @@ public class Ben {
                     Task eventTask = new Event(eventDescription, eventFrom, eventTo);
 
                     // Add to array tasks
-                    addTask(eventTask);
+                    tasks.add(eventTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(eventTask);
