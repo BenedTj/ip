@@ -1,4 +1,5 @@
 import ben.task.Deadline;
+import ben.task.Event;
 import ben.task.Task;
 import ben.task.Todo;
 
@@ -184,6 +185,54 @@ public class Ben {
 
                 // Print confirmation message
                 printTaskAdditionMessage(deadlineTask);
+            } else if (command.equals("event")) {
+                Integer fromIndex = null;
+                Integer toIndex = null;
+
+                // Obtain the description of the Event task
+                StringBuilder eventDescriptionBuilder = new StringBuilder(commandParameters[1]);
+                for (int i = 2; i < commandParametersLength; i++) {
+                    // Stop once "/from" is encountered
+                    if (commandParameters[i].equals("/from")) {
+                        fromIndex = i;
+                        break;
+                    }
+
+                    eventDescriptionBuilder.append(" ");
+                    eventDescriptionBuilder.append(commandParameters[i]);
+                }
+                String eventDescription = eventDescriptionBuilder.toString();
+
+                // Obtain the to date/time of the Event task
+                StringBuilder eventFromBuilder = new StringBuilder(commandParameters[fromIndex + 1]);
+                for (int i = fromIndex + 2; i < commandParametersLength; i++) {
+                    // Stop once "/end" is encountered
+                    if (commandParameters[i].equals("/to")) {
+                        toIndex = i;
+                        break;
+                    }
+
+                    eventFromBuilder.append(" ");
+                    eventFromBuilder.append(commandParameters[i]);
+                }
+                String eventFrom = eventFromBuilder.toString();
+
+                // Obtain the end date/time of the Event task
+                StringBuilder eventToBuilder = new StringBuilder(commandParameters[toIndex + 1]);
+                for (int i = toIndex + 2; i < commandParametersLength; i++) {
+                    eventToBuilder.append(" ");
+                    eventToBuilder.append(commandParameters[i]);
+                }
+                String eventTo = eventToBuilder.toString();
+
+                // Create Event task
+                Task eventTask = new Event(eventDescription, eventFrom, eventTo);
+
+                // Add to array tasks
+                addTask(eventTask);
+
+                // Print confirmation message
+                printTaskAdditionMessage(eventTask);
             } else {
                 Task newTask = new Task(command);
 
