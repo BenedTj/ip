@@ -69,7 +69,7 @@ public class Ben {
 
         // Print message to confirm
         System.out.println("Nice! I've marked this task as done:");
-        System.out.println("  " + task.toString());
+        System.out.println("  " + task);
     }
 
     /**
@@ -91,7 +91,7 @@ public class Ben {
 
         // Print message to confirm
         System.out.println("Ok, I've marked this task as not done yet:");
-        System.out.println("  " + task.toString());
+        System.out.println("  " + task);
     }
 
     private static void deleteAndPrintTaskDeleted(int indexNumber) {
@@ -346,7 +346,7 @@ public class Ben {
                     throw new BenInvalidCommandException();
                 }
             } catch (BenException e) {
-                System.out.println(e.toString());
+                System.out.println(e);
             }
 
             printLine();
