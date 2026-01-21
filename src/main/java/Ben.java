@@ -1,5 +1,6 @@
 import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenException;
+import ben.exception.BenInvalidCommandException;
 import ben.exception.BenInvalidParameterException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
@@ -298,11 +299,8 @@ public class Ben {
                     // Print confirmation message
                     printTaskAdditionMessage(eventTask);
                 } else {
-                    Task newTask = new Task(command);
-
-                    // Add to array tasks
-                    addTask(newTask);
-                    System.out.println("added: " + input);
+                    // If it does not match any command, throw an exception
+                    throw new BenInvalidCommandException();
                 }
             } catch (BenException e) {
                 System.out.println(e.toString());
