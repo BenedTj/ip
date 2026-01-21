@@ -28,7 +28,8 @@ public class Ben {
      */
     private static void printElements() {
         for (int index = 0; index < stringsLength; index++) {
-            System.out.println(strings[index]);
+            int currentIndex = index + 1;
+            System.out.println(currentIndex + ". " + strings[index]);
         }
     }
 
