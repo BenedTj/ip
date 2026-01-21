@@ -32,6 +32,7 @@ public class Ben {
      * Prints all members of the array tasks
      */
     private static void printTasks() {
+        System.out.println("Here are the tasks in your list:");
         for (int index = 0; index < tasksLength; index++) {
             int currentIndex = index + 1;
             System.out.println(currentIndex + "." + tasks[index]);
