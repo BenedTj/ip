@@ -1,4 +1,23 @@
 package ben.task;
 
-public class Deadline {
+// Class to represent tasks that need to be done before a deadline
+public class Deadline extends Task {
+    protected String by;
+
+    /**
+     * Initializes a Deadline object with the description,
+     * a deadline, and a "false" value on isDone
+     *
+     * @param description text description of the Deadline task
+     * @param by the deadline of the Deadline task as a string
+     */
+    public Deadline(String description, String by) {
+        super(description);
+        this.by = by;
+    }
+
+    @Override
+    public String toString() {
+        return "[D]" + super.toString() + " (by: " + this.by + ")";
+    }
 }
