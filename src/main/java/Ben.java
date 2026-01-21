@@ -59,7 +59,15 @@ public class Ben {
      *                    to set isDone attribute
      * @throws BenMarkAlreadyDoneException If the task has already been marked as done
      */
-    private static void markAndPrintTaskDone(int indexNumber) throws BenMarkAlreadyDoneException {
+    private static void markAndPrintTaskDone(int indexNumber)
+            throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException {
+        /* If indexNumber is outside of the length of commandParameters,
+           throw an exception
+         */
+        if (indexNumber > tasks.size()) {
+            throw new BenIndexOutOfRangeException(indexNumber);
+        }
+
         // Obtain index and task
         int index = indexNumber - 1;
         Task task = tasks.get(index);
@@ -81,7 +89,15 @@ public class Ben {
      *                    to set isDone attribute
      * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
      */
-    private static void markAndPrintTaskUndone(int indexNumber) throws BenMarkAlreadyNotDoneException {
+    private static void markAndPrintTaskUndone(int indexNumber)
+            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
+        /* If indexNumber is outside of the length of commandParameters,
+           throw an exception
+         */
+        if (indexNumber > tasks.size()) {
+            throw new BenIndexOutOfRangeException(indexNumber);
+        }
+
         // Obtain index and task
         int index = indexNumber - 1;
         Task task = tasks.get(index);
@@ -94,7 +110,14 @@ public class Ben {
         System.out.println("  " + task);
     }
 
-    private static void deleteAndPrintTaskDeleted(int indexNumber) {
+    private static void deleteAndPrintTaskDeleted(int indexNumber) throws BenIndexOutOfRangeException {
+        /* If indexNumber is outside of the length of commandParameters,
+           throw an exception
+         */
+        if (indexNumber > tasks.size()) {
+            throw new BenIndexOutOfRangeException(indexNumber);
+        }
+
         // Obtain index and task
         int index = indexNumber - 1;
         Task task = tasks.get(index);
@@ -151,13 +174,6 @@ public class Ben {
                         // Obtain indexNumber
                         int indexNumber = Integer.parseInt(commandParameters[1]);
 
-                        /* If indexNumber is outside of the length of commandParameters,
-                           throw an exception
-                         */
-                        if (indexNumber > tasks.size()) {
-                            throw new BenIndexOutOfRangeException(indexNumber);
-                        }
-
                         // Mark done
                         markAndPrintTaskDone(indexNumber);
                     } catch (NumberFormatException e) {
@@ -167,13 +183,6 @@ public class Ben {
                     try {
                         // Obtain indexNumber
                         int indexNumber = Integer.parseInt(commandParameters[1]);
-
-                        /* If indexNumber is outside of the length of commandParameters,
-                           throw an exception
-                         */
-                        if (indexNumber > tasks.size()) {
-                            throw new BenIndexOutOfRangeException(indexNumber);
-                        }
 
                         // Mark not done
                         markAndPrintTaskUndone(indexNumber);
@@ -328,13 +337,6 @@ public class Ben {
                     try {
                         // Obtain indexNumber
                         int indexNumber = Integer.parseInt(commandParameters[1]);
-
-                        /* If indexNumber is outside of the length of commandParameters,
-                           throw an exception
-                         */
-                        if (indexNumber > tasks.size()) {
-                            throw new BenIndexOutOfRangeException(indexNumber);
-                        }
 
                         // Delete task with indexNumber
                         deleteAndPrintTaskDeleted(indexNumber);
