@@ -1,3 +1,5 @@
+package ben.task;
+
 // Class to represent tasks for the list tasks
 public class Task {
     private String description;
