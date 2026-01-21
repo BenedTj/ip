@@ -94,6 +94,20 @@ public class Ben {
         System.out.println("  " + task.toString());
     }
 
+    private static void deleteAndPrintTaskDeleted(int indexNumber) {
+        // Obtain index and task
+        int index = indexNumber - 1;
+        Task task = tasks.get(index);
+
+        // Remove task from tasks
+        tasks.remove(index);
+
+        // Print message to confirm
+        System.out.println("Noted. I've removed this task:");
+        System.out.println("  " + task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+    }
+
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -310,6 +324,23 @@ public class Ben {
 
                     // Print confirmation message
                     printTaskAdditionMessage(eventTask);
+                } else if (command.equals("delete")) {
+                    try {
+                        // Obtain indexNumber
+                        int indexNumber = Integer.parseInt(commandParameters[1]);
+
+                        /* If indexNumber is outside of the length of commandParameters,
+                           throw an exception
+                         */
+                        if (indexNumber > tasks.size()) {
+                            throw new BenIndexOutOfRangeException(indexNumber);
+                        }
+
+                        // Delete task with indexNumber
+                        deleteAndPrintTaskDeleted(indexNumber);
+                    } catch (NumberFormatException e) {
+                        throw new BenInvalidParameterException(commandParameters[1]);
+                    }
                 } else {
                     // If it does not match any command, throw an exception
                     throw new BenInvalidCommandException();
