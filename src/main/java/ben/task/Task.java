@@ -1,5 +1,8 @@
 package ben.task;
 
+import ben.exception.BenMarkAlreadyDoneException;
+import ben.exception.BenMarkAlreadyNotDoneException;
+
 // Class to represent tasks for the list tasks
 public class Task {
     protected String description;
@@ -27,16 +30,28 @@ public class Task {
 
     /**
      * Marks the task as done
+     *
+     * @throws BenMarkAlreadyDoneException If this.isDone is already true
      */
-    public void markAsDone() {
-        this.isDone = true;
+    public void markAsDone() throws BenMarkAlreadyDoneException {
+        if (this.isDone) {
+            throw new BenMarkAlreadyDoneException();
+        } else {
+            this.isDone = true;
+        }
     }
 
     /**
      * Marks the task as undone
+     *
+     * @throws BenMarkAlreadyNotDoneException If this.isDone is already false
      */
-    public void markAsUndone() {
-        this.isDone = false;
+    public void markAsUndone() throws BenMarkAlreadyNotDoneException {
+        if (this.isDone) {
+            this.isDone = false;
+        } else {
+            throw new BenMarkAlreadyNotDoneException();
+        }
     }
 
     @Override
