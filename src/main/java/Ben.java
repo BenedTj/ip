@@ -215,6 +215,11 @@ public class Ben {
                     // Print confirmation message
                     printTaskAdditionMessage(deadlineTask);
                 } else if (command.equals("event")) {
+                    // Throw an exception if there is no description
+                    if (commandParametersLength <= 1) {
+                        throw new BenEmptyParameterValueException("description", "event");
+                    }
+
                     Integer fromIndex = null;
                     Integer toIndex = null;
 
@@ -232,6 +237,17 @@ public class Ben {
                     }
                     String eventDescription = eventDescriptionBuilder.toString();
 
+                    // Throw an exception if there is no "/from"
+                    if (fromIndex == null) {
+                        throw new BenMissingParameterException("/from");
+                    }
+
+                    // Throw an exception if there is no value for "/from"
+                    if (fromIndex + 1 >= commandParametersLength
+                            || commandParameters[fromIndex + 1].equals("/to")) {
+                        throw new BenEmptyParameterValueException("/from", "event");
+                    }
+
                     // Obtain the to date/time of the Event task
                     StringBuilder eventFromBuilder = new StringBuilder(commandParameters[fromIndex + 1]);
                     for (int i = fromIndex + 2; i < commandParametersLength; i++) {
@@ -245,6 +261,16 @@ public class Ben {
                         eventFromBuilder.append(commandParameters[i]);
                     }
                     String eventFrom = eventFromBuilder.toString();
+
+                    // Throw an exception if there is no "/to"
+                    if (toIndex == null) {
+                        throw new BenMissingParameterException("/to");
+                    }
+
+                    // Throw an exception if there is no value for "/to"
+                    if (toIndex + 1 >= commandParametersLength) {
+                        throw new BenEmptyParameterValueException("/to", "event");
+                    }
 
                     // Obtain the end date/time of the Event task
                     StringBuilder eventToBuilder = new StringBuilder(commandParameters[toIndex + 1]);
