@@ -61,7 +61,7 @@ public class Ben {
      */
     private static void markAndPrintTaskDone(int indexNumber)
             throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException {
-        /* If indexNumber is outside of the length of commandParameters,
+        /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
         if (indexNumber > tasks.size()) {
@@ -91,7 +91,7 @@ public class Ben {
      */
     private static void markAndPrintTaskUndone(int indexNumber)
             throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
-        /* If indexNumber is outside of the length of commandParameters,
+        /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
         if (indexNumber > tasks.size()) {
@@ -111,7 +111,7 @@ public class Ben {
     }
 
     private static void deleteAndPrintTaskDeleted(int indexNumber) throws BenIndexOutOfRangeException {
-        /* If indexNumber is outside of the length of commandParameters,
+        /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
         if (indexNumber > tasks.size()) {
