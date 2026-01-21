@@ -1,4 +1,6 @@
 import ben.exception.BenException;
+import ben.exception.BenMarkAlreadyDoneException;
+import ben.exception.BenMarkAlreadyNotDoneException;
 import ben.task.Deadline;
 import ben.task.Event;
 import ben.task.Task;
@@ -59,8 +61,9 @@ public class Ben {
      *
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
+     * @throws BenMarkAlreadyDoneException If the task has already been marked as done
      */
-    private static void markAndPrintTaskDone(int indexNumber) {
+    private static void markAndPrintTaskDone(int indexNumber) throws BenMarkAlreadyDoneException {
         // Obtain index
         int index = indexNumber - 1;
 
@@ -79,8 +82,9 @@ public class Ben {
      *
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
+     * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
      */
-    private static void markAndPrintTaskUndone(int indexNumber) {
+    private static void markAndPrintTaskUndone(int indexNumber) throws BenMarkAlreadyNotDoneException {
         // Obtain index
         int index = indexNumber - 1;
 
