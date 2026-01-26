@@ -58,6 +58,7 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      * @throws BenMarkAlreadyDoneException If the task has already been marked as done
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
      */
     private static void markAndPrintTaskDone(int indexNumber)
             throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException {
@@ -88,6 +89,7 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
      */
     private static void markAndPrintTaskUndone(int indexNumber)
             throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
