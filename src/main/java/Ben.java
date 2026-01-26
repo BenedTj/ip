@@ -11,13 +11,39 @@ import ben.task.Event;
 import ben.task.Task;
 import ben.task.Todo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ben {
     private static final String NAME = "Ben";
     private static final String LINE = "____________________________________________________________";
+    private static final String FILE_PATH = "./data/ben/tasks.txt";
     private static ArrayList<Task> tasks = new ArrayList<>();
+
+    /**
+     * Return the contents of the file with the filePath
+     * and create the file if it does not exist
+     *
+     * @param filePath the path of the file to be accessed
+     * @return the text content of the file
+     * @throws FileNotFoundException If the file is not found
+     *                               (never thrown because of the file
+     *                               existence check)
+     * @throws IOException If an input/output runtime exception occurs
+     */
+    private static String initializeRawDataFromPath(String filePath) throws FileNotFoundException, IOException {
+        File file = new File(filePath);
+        if (file.exists()) {
+            Scanner fileScanner = new Scanner(file);
+            return fileScanner.toString();
+        } else {
+            boolean status = file.createNewFile();
+            return "";
+        }
+    }
 
     /**
      * Prints a line.
