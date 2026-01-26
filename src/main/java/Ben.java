@@ -27,7 +27,7 @@ public class Ben {
     }
 
     /**
-     * Prints all members of the array tasks
+     * Prints all members of the tasks
      */
     private static void printTasks() {
         System.out.println("Here are the tasks in your list:");
@@ -39,8 +39,7 @@ public class Ben {
     }
 
     /**
-     * Print a confirmation message for adding the task to
-     * the array tasks
+     * Print a confirmation message for adding the task to tasks
      *
      * @param task the Task object that has been added
      */
@@ -215,7 +214,7 @@ public class Ben {
                     // Create Todo task
                     Task todoTask = new Todo(todoDescription);
 
-                    // Add to array tasks
+                    // Add to tasks
                     tasks.add(todoTask);
 
                     // Print confirmation message
@@ -263,7 +262,7 @@ public class Ben {
                     // Create Deadline task
                     Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
 
-                    // Add to array tasks
+                    // Add to tasks
                     tasks.add(deadlineTask);
 
                     // Print confirmation message
@@ -337,7 +336,7 @@ public class Ben {
                     // Create Event task
                     Task eventTask = new Event(eventDescription, eventFrom, eventTo);
 
-                    // Add to array tasks
+                    // Add to tasks
                     tasks.add(eventTask);
 
                     // Print confirmation message
