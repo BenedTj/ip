@@ -54,6 +54,16 @@ public class Task {
         }
     }
 
+    /**
+     * Returns the representation of the task
+     * to be used in hard disk storage.
+     *
+     * @return the string representation
+     */
+    public String toRepresentation() {
+        return this.getStatusIcon() + "|" + this.description;
+    }
+
     @Override
     public String toString() {
         // Only display "X" if this.isDone is true

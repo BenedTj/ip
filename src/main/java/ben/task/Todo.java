@@ -13,6 +13,11 @@ public class Todo extends Task {
     }
 
     @Override
+    public String toRepresentation() {
+        return "T|" + super.toRepresentation();
+    }
+
+    @Override
     public String toString() {
         return "[T]" + super.toString();
     }
