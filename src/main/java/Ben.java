@@ -110,6 +110,13 @@ public class Ben {
         System.out.println("  " + task);
     }
 
+    /**
+     * Delete the task found on the position indexNumber of tasks.
+     *
+     * @param indexNumber the index number of the element of type task
+     *                    to delete from tasks.
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
+     */
     private static void deleteAndPrintTaskDeleted(int indexNumber) throws BenIndexOutOfRangeException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
