@@ -13,6 +13,7 @@ import ben.task.Todo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -43,6 +44,20 @@ public class Ben {
             boolean status = file.createNewFile();
             return "";
         }
+    }
+
+    /**
+     * Writes the content of the file found in filePath with
+     * the string content
+     *
+     * @param filePath the path of the file
+     * @param content the content to overwrite the file with
+     * @throws IOException If a runtime input/output exception is thrown
+     */
+    private static void overwriteRawData(String filePath, String content) throws IOException {
+        FileWriter fileWriter = new FileWriter(filePath, false);
+        fileWriter.write(content);
+        fileWriter.close();
     }
 
     /**
