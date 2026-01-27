@@ -1,11 +1,4 @@
-import ben.exception.BenEmptyParameterValueException;
-import ben.exception.BenException;
-import ben.exception.BenIndexOutOfRangeException;
-import ben.exception.BenInvalidCommandException;
-import ben.exception.BenInvalidParameterException;
-import ben.exception.BenMarkAlreadyDoneException;
-import ben.exception.BenMarkAlreadyNotDoneException;
-import ben.exception.BenMissingParameterException;
+import ben.exception.*;
 import ben.task.Deadline;
 import ben.task.Event;
 import ben.task.Task;
@@ -94,6 +87,20 @@ public class Ben {
     private static void overwriteTasksFile(String filePath) throws IOException {
         String tasksRepresentation = getTasksRepresentation();
         overwriteRawData(filePath, tasksRepresentation);
+    }
+
+    private static void loadSavedTasks(String content) throws BenInvalidFileFormatException {
+        // Clears content of tasks first
+        tasks.clear();
+
+        String[] lines = content.split(System.lineSeparator());
+        int linesLength = lines.length;
+
+        for (int i = 0; i < linesLength; i++) {
+            // Add task to tasks
+            Task task = Task.toTask(lines[i]);
+            tasks.add(task);
+        }
     }
 
     /**
