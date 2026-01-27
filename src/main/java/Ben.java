@@ -142,9 +142,10 @@ public class Ben {
      *                    to set isDone attribute
      * @throws BenMarkAlreadyDoneException If the task has already been marked as done
      * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
+     * @throws IOException If tasks saving process failed due to Input/Output exception
      */
     private static void markAndPrintTaskDone(int indexNumber)
-            throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException {
+            throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -162,6 +163,9 @@ public class Ben {
         // Print message to confirm
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
     /**
@@ -173,9 +177,10 @@ public class Ben {
      *                    to set isDone attribute
      * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
      * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
+     * @throws IOException If tasks saving process failed due to Input/Output exception
      */
     private static void markAndPrintTaskUndone(int indexNumber)
-            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
+            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -193,6 +198,9 @@ public class Ben {
         // Print message to confirm
         System.out.println("Ok, I've marked this task as not done yet:");
         System.out.println("  " + task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
     /**
@@ -201,8 +209,10 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to delete from tasks.
      * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
+     * @throws IOException If tasks saving process failed due to Input/Output exception.
      */
-    private static void deleteAndPrintTaskDeleted(int indexNumber) throws BenIndexOutOfRangeException {
+    private static void deleteAndPrintTaskDeleted(int indexNumber)
+            throws BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -221,6 +231,9 @@ public class Ben {
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
     public static void main(String[] args) {
@@ -232,7 +245,7 @@ public class Ben {
             // Never thrown if application logic is correct
             System.out.println("The file to save to is not found.");
         } catch (IOException e) {
-            System.out.println("There is a problem with input/output.");
+            System.out.println("Input/Output error caused saved tasks loading.");
         } catch (BenException e) {
             System.out.println(e);
         }
@@ -454,6 +467,8 @@ public class Ben {
                 }
             } catch (BenException e) {
                 System.out.println(e);
+            } catch (IOException e) {
+                System.out.println("Tasks saving failed due to input/output error.");
             }
 
             printLine();
