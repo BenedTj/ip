@@ -226,12 +226,15 @@ public class Ben {
     public static void main(String[] args) {
         // Hard disk save initialization or setup
         try {
-            initializeRawDataFromPath(FILE_PATH);
+            String content = initializeRawDataFromPath(FILE_PATH);
+            loadSavedTasks(content);
         } catch (FileNotFoundException e) {
             // Never thrown if application logic is correct
             System.out.println("The file to save to is not found.");
         } catch (IOException e) {
             System.out.println("There is a problem with input/output.");
+        } catch (BenException e) {
+            System.out.println(e);
         }
 
         String logo = " ____        _        \n"
