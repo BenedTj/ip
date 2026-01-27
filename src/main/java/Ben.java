@@ -86,6 +86,17 @@ public class Ben {
     }
 
     /**
+     * Saves tasks in the file found in the filePath
+     *
+     * @param filePath the path of the file
+     * @throws IOException If an input/output exception occurs
+     */
+    private static void overwriteTasksFile(String filePath) throws IOException {
+        String tasksRepresentation = getTasksRepresentation();
+        overwriteRawData(filePath, tasksRepresentation);
+    }
+
+    /**
      * Prints a line.
      */
     private static void printLine() {
