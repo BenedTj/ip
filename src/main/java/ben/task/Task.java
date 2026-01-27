@@ -1,5 +1,6 @@
 package ben.task;
 
+import ben.exception.BenInvalidFileFormatException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
@@ -17,6 +18,27 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+    }
+
+    /**
+     * Returns the task represented by taskRepresentation
+     *
+     * @param taskRepresentation the raw string representation of the task
+     * @return the Task object that is represented by the string
+     * @throws BenInvalidFileFormatException If the format of the string is invalid
+     */
+    public static Task toTask(String taskRepresentation) throws BenInvalidFileFormatException {
+        String[] sections = taskRepresentation.split("|");
+
+        if (sections[0].equals("T")) {
+            return new Todo(sections[1]);
+        } else if (sections[0].equals("D")) {
+            return new Deadline(sections[1], sections[2]);
+        } else if (sections[0].equals("E")) {
+            return new Event(sections[1], sections[2], sections[3]);
+        }
+
+        throw new BenInvalidFileFormatException(taskRepresentation);
     }
 
     /**
