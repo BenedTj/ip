@@ -61,6 +61,31 @@ public class Ben {
     }
 
     /**
+     * Returns the raw string representation of the current tasks
+     *
+     * @return the string that contains the representations of the
+     *         tasks within tasks
+     */
+    private static String getTasksRepresentation() {
+        int tasksLength = tasks.size();
+
+        if (tasks.isEmpty()) {
+            return "";
+        } else {
+            // Write each task by ascending order in tasks
+            StringBuilder representationBuilder = new StringBuilder(tasks.get(0).toRepresentation());
+
+            for (int i = 1; i < tasksLength; i++) {
+                // Write each task line by line
+                representationBuilder.append(System.lineSeparator());
+                representationBuilder.append(tasks.get(i).toRepresentation());
+            }
+
+            return representationBuilder.toString();
+        }
+    }
+
+    /**
      * Prints a line.
      */
     private static void printLine() {
