@@ -134,6 +134,12 @@ public class Ben {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
+    /**
+     * Adds a Task object to tasks
+     *
+     * @param task the Task object to be added
+     * @throws IOException If an input/output exception occurs
+     */
     private static void addTask(Task task) throws IOException {
         tasks.add(task);
 
