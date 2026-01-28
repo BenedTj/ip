@@ -6,7 +6,7 @@ public class Event extends Task {
     protected String to;
 
     /**
-     * Initializes a Event object with the description,
+     * Initializes an Event object with the description,
      * a date/time to start, a date/time to end
      * and a "false" value on isDone
      *
@@ -24,7 +24,7 @@ public class Event extends Task {
     }
 
     /**
-     * Initializes a Event object with the description,
+     * Initializes an Event object with the description,
      * isDone value, a date/time to start,
      * a date/time to end, and a "false" value on isDone
      *
