@@ -16,6 +16,19 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    /**
+     * Initializes a Deadline object with the description,
+     * isDone value, and a deadline
+     *
+     * @param description text description of the Deadline task
+     * @param isDone initial isDone value of the Deadline task
+     * @param by the deadline of the Deadline task as a string
+     */
+    public Deadline(String description, boolean isDone, String by) {
+        super(description, isDone);
+        this.by = by;
+    }
+
     @Override
     public String toRepresentation() {
         return "D|" + super.toRepresentation() + "|" + this.by;

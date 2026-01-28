@@ -23,6 +23,25 @@ public class Event extends Task {
         this.to = to;
     }
 
+    /**
+     * Initializes a Event object with the description,
+     * isDone value, a date/time to start,
+     * a date/time to end, and a "false" value on isDone
+     *
+     * @param description text description of the Deadline task
+     * @param isDone initial isDone value of the Deadline task
+     * @param from the date/time when the Event task
+     *             should start as a string
+     * @param to the date/time when the Event task
+     *            should end as a string
+     */
+    public Event(String description, boolean isDone, String from, String to) {
+        super(description, isDone);
+
+        this.from = from;
+        this.to = to;
+    }
+
     @Override
     public String toRepresentation() {
         return "E|" + super.toRepresentation() + "|" + this.from + "|" + this.to;

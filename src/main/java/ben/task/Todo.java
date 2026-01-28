@@ -12,6 +12,17 @@ public class Todo extends Task {
         super(description);
     }
 
+    /**
+     * Initializes a Todo object with the description
+     * and isDone value
+     *
+     * @param description text description of the Todo task
+     * @param isDone initial isDone value of the Todo task
+     */
+    public Todo(String description, boolean isDone) {
+        super(description, isDone);
+    }
+
     @Override
     public String toRepresentation() {
         return "T|" + super.toRepresentation();
