@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,7 +36,14 @@ public class Ben {
             Scanner fileScanner = new Scanner(file);
             return fileScanner.toString();
         } else {
-            boolean status = file.createNewFile();
+            Path path = Path.of(filePath);
+
+            // Create directories
+            Files.createDirectories(path.getParent());
+
+            // Create file
+            file.createNewFile();
+
             return "";
         }
     }
