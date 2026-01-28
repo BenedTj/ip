@@ -89,7 +89,8 @@ public class Ben {
         overwriteRawData(filePath, tasksRepresentation);
     }
 
-    private static void loadSavedTasks(String content) throws BenInvalidFileFormatException {
+    private static void loadSavedTasks(String content)
+            throws BenInvalidFileFormatException, IOException {
         // Clears content of tasks first
         tasks.clear();
 
@@ -99,7 +100,7 @@ public class Ben {
         for (int i = 0; i < linesLength; i++) {
             // Add task to tasks
             Task task = Task.toTask(lines[i]);
-            tasks.add(task);
+            addTask(task);
         }
     }
 
@@ -332,7 +333,7 @@ public class Ben {
                     Task todoTask = new Todo(todoDescription);
 
                     // Add to tasks
-                    tasks.add(todoTask);
+                    addTask(todoTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(todoTask);
@@ -380,7 +381,7 @@ public class Ben {
                     Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
 
                     // Add to tasks
-                    tasks.add(deadlineTask);
+                    addTask(deadlineTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(deadlineTask);
@@ -454,7 +455,7 @@ public class Ben {
                     Task eventTask = new Event(eventDescription, eventFrom, eventTo);
 
                     // Add to tasks
-                    tasks.add(eventTask);
+                    addTask(eventTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(eventTask);
