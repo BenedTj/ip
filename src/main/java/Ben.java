@@ -133,6 +133,13 @@ public class Ben {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
+    private static void addTask(Task task) throws IOException {
+        tasks.add(task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
+    }
+
     /**
      * Set isDone attribute of element of type task
      * with the index number of indexNumber to true
