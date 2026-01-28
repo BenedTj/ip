@@ -21,6 +21,18 @@ public class Task {
     }
 
     /**
+     * Initializes a Task object with the description
+     * and isDone value
+     *
+     * @param description text description of the task
+     * @param isDone initial isDone value of task
+     */
+    public Task(String description, boolean isDone) {
+        this.description = description;
+        this.isDone = isDone;
+    }
+
+    /**
      * Returns the task represented by taskRepresentation
      *
      * @param taskRepresentation the raw string representation of the task
