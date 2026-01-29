@@ -4,6 +4,8 @@ import ben.exception.BenInvalidFileFormatException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
+import java.time.LocalDateTime;
+
 // Class to represent tasks for the list tasks
 public class Task {
     protected String description;
@@ -51,9 +53,9 @@ public class Task {
         if (sections[0].equals("T")) {
             return new Todo(sections[2], markedDone);
         } else if (sections[0].equals("D")) {
-            return new Deadline(sections[2], markedDone, sections[3]);
+            return new Deadline(sections[2], markedDone, LocalDateTime.parse(sections[3]));
         } else if (sections[0].equals("E")) {
-            return new Event(sections[2], markedDone, sections[3], sections[4]);
+            return new Event(sections[2], markedDone, LocalDateTime.parse(sections[3]), LocalDateTime.parse(sections[4]));
         }
 
         throw new BenInvalidFileFormatException(taskRepresentation);
