@@ -263,7 +263,9 @@ public class Ben {
         // Hard disk save initialization or setup
         try {
             String content = initializeRawDataFromPath(FILE_PATH);
-            loadSavedTasks(content);
+            if (content != "") {
+                loadSavedTasks(content);
+            }
         } catch (FileNotFoundException e) {
             // Never thrown if application logic is correct
             System.out.println("The file to save to is not found.");
