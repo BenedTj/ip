@@ -1,23 +1,131 @@
-import ben.exception.BenEmptyParameterValueException;
-import ben.exception.BenException;
-import ben.exception.BenIndexOutOfRangeException;
-import ben.exception.BenInvalidCommandException;
-import ben.exception.BenInvalidParameterException;
-import ben.exception.BenMarkAlreadyDoneException;
-import ben.exception.BenMarkAlreadyNotDoneException;
-import ben.exception.BenMissingParameterException;
+import ben.exception.*;
 import ben.task.Deadline;
 import ben.task.Event;
 import ben.task.Task;
 import ben.task.Todo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ben {
     private static final String NAME = "Ben";
     private static final String LINE = "____________________________________________________________";
+    private static final String FILE_PATH = "./data/ben/tasks.txt";
     private static ArrayList<Task> tasks = new ArrayList<>();
+
+    /**
+     * Return the contents of the file with the filePath
+     * and create the file if it does not exist
+     *
+     * @param filePath the path of the file to be accessed
+     * @return the text content of the file
+     * @throws FileNotFoundException If the file is not found
+     *                               (never thrown because of the file
+     *                               existence check)
+     * @throws IOException If an input/output runtime exception occurs
+     */
+    private static String initializeRawDataFromPath(String filePath) throws FileNotFoundException, IOException {
+        File file = new File(filePath);
+        if (file.exists()) {
+            StringBuilder contentBuilder = new StringBuilder();
+
+            Scanner fileScanner = new Scanner(file);
+
+            // Get first line
+            if (fileScanner.hasNextLine()) {
+                contentBuilder.append(fileScanner.nextLine());
+            }
+
+            // Get remaining lines
+            while (fileScanner.hasNextLine()) {
+                contentBuilder.append(System.lineSeparator());
+                contentBuilder.append(fileScanner.nextLine());
+            }
+
+            return contentBuilder.toString();
+        } else {
+            Path path = Path.of(filePath);
+
+            // Create directories
+            Files.createDirectories(path.getParent());
+
+            // Create file
+            file.createNewFile();
+
+            return "";
+        }
+    }
+
+    /**
+     * Writes the content of the file found in filePath with
+     * the string content
+     *
+     * @param filePath the path of the file
+     * @param content the content to overwrite the file with
+     * @throws IOException If a runtime input/output exception is thrown
+     */
+    private static void overwriteRawData(String filePath, String content) throws IOException {
+        FileWriter fileWriter = new FileWriter(filePath, false);
+        fileWriter.write(content);
+        fileWriter.close();
+    }
+
+    /**
+     * Returns the raw string representation of the current tasks
+     *
+     * @return the string that contains the representations of the
+     *         tasks within tasks
+     */
+    private static String getTasksRepresentation() {
+        int tasksLength = tasks.size();
+
+        if (tasks.isEmpty()) {
+            return "";
+        } else {
+            // Write each task by ascending order in tasks
+            StringBuilder representationBuilder = new StringBuilder(tasks.get(0).toRepresentation());
+
+            for (int i = 1; i < tasksLength; i++) {
+                // Write each task line by line
+                representationBuilder.append(System.lineSeparator());
+                representationBuilder.append(tasks.get(i).toRepresentation());
+            }
+
+            return representationBuilder.toString();
+        }
+    }
+
+    /**
+     * Saves tasks in the file found in the filePath
+     *
+     * @param filePath the path of the file
+     * @throws IOException If an input/output exception occurs
+     */
+    private static void overwriteTasksFile(String filePath) throws IOException {
+        String tasksRepresentation = getTasksRepresentation();
+        overwriteRawData(filePath, tasksRepresentation);
+    }
+
+    private static void loadSavedTasks(String content)
+            throws BenInvalidFileFormatException, IOException {
+        // Clears content of tasks first
+        tasks.clear();
+
+        String[] lines = content.split(System.lineSeparator());
+        int linesLength = lines.length;
+
+        for (int i = 0; i < linesLength; i++) {
+            // Add task to tasks
+            Task task = Task.toTask(lines[i]);
+            tasks.add(task);
+        }
+    }
 
     /**
      * Prints a line.
@@ -27,7 +135,7 @@ public class Ben {
     }
 
     /**
-     * Prints all members of the array tasks
+     * Prints all members of the tasks
      */
     private static void printTasks() {
         System.out.println("Here are the tasks in your list:");
@@ -39,8 +147,7 @@ public class Ben {
     }
 
     /**
-     * Print a confirmation message for adding the task to
-     * the array tasks
+     * Print a confirmation message for adding the task to tasks
      *
      * @param task the Task object that has been added
      */
@@ -51,6 +158,19 @@ public class Ben {
     }
 
     /**
+     * Adds a Task object to tasks
+     *
+     * @param task the Task object to be added
+     * @throws IOException If an input/output exception occurs
+     */
+    private static void addTask(Task task) throws IOException {
+        tasks.add(task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
+    }
+
+    /**
      * Set isDone attribute of element of type task
      * with the index number of indexNumber to true
      * and prints confirmation message
@@ -58,9 +178,11 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      * @throws BenMarkAlreadyDoneException If the task has already been marked as done
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
+     * @throws IOException If tasks saving process failed due to Input/Output exception
      */
     private static void markAndPrintTaskDone(int indexNumber)
-            throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException {
+            throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -78,6 +200,9 @@ public class Ben {
         // Print message to confirm
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
     /**
@@ -88,9 +213,11 @@ public class Ben {
      * @param indexNumber the index number of the element of type task
      *                    to set isDone attribute
      * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
+     * @throws IOException If tasks saving process failed due to Input/Output exception
      */
     private static void markAndPrintTaskUndone(int indexNumber)
-            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
+            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -108,9 +235,21 @@ public class Ben {
         // Print message to confirm
         System.out.println("Ok, I've marked this task as not done yet:");
         System.out.println("  " + task);
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
-    private static void deleteAndPrintTaskDeleted(int indexNumber) throws BenIndexOutOfRangeException {
+    /**
+     * Delete the task found on the position indexNumber of tasks.
+     *
+     * @param indexNumber the index number of the element of type task
+     *                    to delete from tasks.
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
+     * @throws IOException If tasks saving process failed due to Input/Output exception.
+     */
+    private static void deleteAndPrintTaskDeleted(int indexNumber)
+            throws BenIndexOutOfRangeException, IOException {
         /* If indexNumber is outside of the length of tasks,
            throw an exception
          */
@@ -129,9 +268,27 @@ public class Ben {
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+
+        // Update saved tasks
+        overwriteTasksFile(FILE_PATH);
     }
 
     public static void main(String[] args) {
+        // Hard disk save initialization or setup
+        try {
+            String content = initializeRawDataFromPath(FILE_PATH);
+            if (content != "") {
+                loadSavedTasks(content);
+            }
+        } catch (FileNotFoundException e) {
+            // Never thrown if application logic is correct
+            System.out.println("The file to save to is not found.");
+        } catch (IOException e) {
+            System.out.println("Input/Output error caused saved tasks loading.");
+        } catch (BenException e) {
+            System.out.println(e);
+        }
+
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -206,8 +363,8 @@ public class Ben {
                     // Create Todo task
                     Task todoTask = new Todo(todoDescription);
 
-                    // Add to array tasks
-                    tasks.add(todoTask);
+                    // Add to tasks
+                    addTask(todoTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(todoTask);
@@ -254,8 +411,8 @@ public class Ben {
                     // Create Deadline task
                     Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
 
-                    // Add to array tasks
-                    tasks.add(deadlineTask);
+                    // Add to tasks
+                    addTask(deadlineTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(deadlineTask);
@@ -328,8 +485,8 @@ public class Ben {
                     // Create Event task
                     Task eventTask = new Event(eventDescription, eventFrom, eventTo);
 
-                    // Add to array tasks
-                    tasks.add(eventTask);
+                    // Add to tasks
+                    addTask(eventTask);
 
                     // Print confirmation message
                     printTaskAdditionMessage(eventTask);
@@ -349,6 +506,8 @@ public class Ben {
                 }
             } catch (BenException e) {
                 System.out.println(e);
+            } catch (IOException e) {
+                System.out.println("Tasks saving failed due to input/output error.");
             }
 
             printLine();
