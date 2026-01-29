@@ -33,8 +33,22 @@ public class Ben {
     private static String initializeRawDataFromPath(String filePath) throws FileNotFoundException, IOException {
         File file = new File(filePath);
         if (file.exists()) {
+            StringBuilder contentBuilder = new StringBuilder();
+
             Scanner fileScanner = new Scanner(file);
-            return fileScanner.toString();
+
+            // Get first line
+            if (fileScanner.hasNextLine()) {
+                contentBuilder.append(fileScanner.nextLine());
+            }
+
+            // Get remaining lines
+            while (fileScanner.hasNextLine()) {
+                contentBuilder.append(System.lineSeparator());
+                contentBuilder.append(fileScanner.nextLine());
+            }
+
+            return contentBuilder.toString();
         } else {
             Path path = Path.of(filePath);
 
