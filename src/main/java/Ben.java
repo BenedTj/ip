@@ -20,7 +20,7 @@ public class Ben {
     private static ArrayList<Task> tasks = new ArrayList<>();
 
     /**
-     * Return the contents of the file with the filePath
+     * Returns the contents of the file with the filePath
      * and create the file if it does not exist.
      *
      * @param filePath The path of the file to be accessed.
@@ -147,7 +147,7 @@ public class Ben {
     }
 
     /**
-     * Print a confirmation message for adding the task to tasks.
+     * Prints a confirmation message for adding the task to tasks.
      *
      * @param task The Task object that has been added.
      */
@@ -171,7 +171,7 @@ public class Ben {
     }
 
     /**
-     * Set isDone attribute of element of type task
+     * Sets isDone attribute of element of type task
      * with the index number of indexNumber to true
      * and prints confirmation message.
      *
@@ -206,7 +206,7 @@ public class Ben {
     }
 
     /**
-     * Set isDone attribute of element of type task
+     * Sets isDone attribute of element of type task
      * with the index number of indexNumber to false
      * and prints confirmation message.
      *
@@ -241,7 +241,7 @@ public class Ben {
     }
 
     /**
-     * Delete the task found on the position indexNumber of tasks.
+     * Deletes the task found on the position indexNumber of tasks.
      *
      * @param indexNumber The index number of the element of type task
      *                    to delete from tasks.
