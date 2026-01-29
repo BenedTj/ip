@@ -21,14 +21,14 @@ public class Ben {
 
     /**
      * Return the contents of the file with the filePath
-     * and create the file if it does not exist
+     * and create the file if it does not exist.
      *
-     * @param filePath the path of the file to be accessed
-     * @return the text content of the file
+     * @param filePath The path of the file to be accessed.
+     * @return The text content of the file.
      * @throws FileNotFoundException If the file is not found
      *                               (never thrown because of the file
-     *                               existence check)
-     * @throws IOException If an input/output runtime exception occurs
+     *                               existence check).
+     * @throws IOException If an input/output runtime exception occurs.
      */
     private static String initializeRawDataFromPath(String filePath) throws FileNotFoundException, IOException {
         File file = new File(filePath);
@@ -64,11 +64,11 @@ public class Ben {
 
     /**
      * Writes the content of the file found in filePath with
-     * the string content
+     * the string content.
      *
-     * @param filePath the path of the file
-     * @param content the content to overwrite the file with
-     * @throws IOException If a runtime input/output exception is thrown
+     * @param filePath The path of the file.
+     * @param content The content to overwrite the file with.
+     * @throws IOException If a runtime input/output exception is thrown.
      */
     private static void overwriteRawData(String filePath, String content) throws IOException {
         FileWriter fileWriter = new FileWriter(filePath, false);
@@ -77,10 +77,10 @@ public class Ben {
     }
 
     /**
-     * Returns the raw string representation of the current tasks
+     * Returns the raw string representation of the current tasks.
      *
-     * @return the string that contains the representations of the
-     *         tasks within tasks
+     * @return The string that contains the representations of the
+     *         tasks within tasks.
      */
     private static String getTasksRepresentation() {
         int tasksLength = tasks.size();
@@ -102,10 +102,10 @@ public class Ben {
     }
 
     /**
-     * Saves tasks in the file found in the filePath
+     * Saves tasks in the file found in the filePath.
      *
-     * @param filePath the path of the file
-     * @throws IOException If an input/output exception occurs
+     * @param filePath The path of the file.
+     * @throws IOException If an input/output exception occurs.
      */
     private static void overwriteTasksFile(String filePath) throws IOException {
         String tasksRepresentation = getTasksRepresentation();
@@ -135,7 +135,7 @@ public class Ben {
     }
 
     /**
-     * Prints all members of the tasks
+     * Prints all members of the tasks.
      */
     private static void printTasks() {
         System.out.println("Here are the tasks in your list:");
@@ -147,9 +147,9 @@ public class Ben {
     }
 
     /**
-     * Print a confirmation message for adding the task to tasks
+     * Print a confirmation message for adding the task to tasks.
      *
-     * @param task the Task object that has been added
+     * @param task The Task object that has been added.
      */
     private static void printTaskAdditionMessage(Task task) {
         System.out.println("Got it. I've added this task:");
@@ -158,10 +158,10 @@ public class Ben {
     }
 
     /**
-     * Adds a Task object to tasks
+     * Adds a Task object to tasks.
      *
-     * @param task the Task object to be added
-     * @throws IOException If an input/output exception occurs
+     * @param task The Task object to be added.
+     * @throws IOException If an input/output exception occurs.
      */
     private static void addTask(Task task) throws IOException {
         tasks.add(task);
@@ -173,13 +173,13 @@ public class Ben {
     /**
      * Set isDone attribute of element of type task
      * with the index number of indexNumber to true
-     * and prints confirmation message
+     * and prints confirmation message.
      *
-     * @param indexNumber the index number of the element of type task
-     *                    to set isDone attribute
-     * @throws BenMarkAlreadyDoneException If the task has already been marked as done
-     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
-     * @throws IOException If tasks saving process failed due to Input/Output exception
+     * @param indexNumber The index number of the element of type task
+     *                    to set isDone attribute.
+     * @throws BenMarkAlreadyDoneException If the task has already been marked as done.
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
+     * @throws IOException If tasks saving process failed due to Input/Output exception.
      */
     private static void markAndPrintTaskDone(int indexNumber)
             throws BenMarkAlreadyDoneException, BenIndexOutOfRangeException, IOException {
@@ -208,13 +208,13 @@ public class Ben {
     /**
      * Set isDone attribute of element of type task
      * with the index number of indexNumber to false
-     * and prints confirmation message
+     * and prints confirmation message.
      *
-     * @param indexNumber the index number of the element of type task
-     *                    to set isDone attribute
-     * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done
-     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks
-     * @throws IOException If tasks saving process failed due to Input/Output exception
+     * @param indexNumber The index number of the element of type task
+     *                    to set isDone attribute.
+     * @throws BenMarkAlreadyNotDoneException If the task has already been marked as not done.
+     * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
+     * @throws IOException If tasks saving process failed due to Input/Output exception.
      */
     private static void markAndPrintTaskUndone(int indexNumber)
             throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException, IOException {
@@ -243,7 +243,7 @@ public class Ben {
     /**
      * Delete the task found on the position indexNumber of tasks.
      *
-     * @param indexNumber the index number of the element of type task
+     * @param indexNumber The index number of the element of type task
      *                    to delete from tasks.
      * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
      * @throws IOException If tasks saving process failed due to Input/Output exception.

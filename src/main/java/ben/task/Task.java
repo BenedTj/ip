@@ -11,9 +11,9 @@ public class Task {
 
     /**
      * Initializes a Task object with the description and a "false" value
-     * on isDone
+     * on isDone.
      *
-     * @param description text description of the task
+     * @param description Text description of the task.
      */
     public Task(String description) {
         this.description = description;
@@ -22,10 +22,10 @@ public class Task {
 
     /**
      * Initializes a Task object with the description
-     * and isDone value
+     * and isDone value.
      *
-     * @param description text description of the task
-     * @param isDone initial isDone value of task
+     * @param description Text description of the task.
+     * @param isDone Initial isDone value of task.
      */
     public Task(String description, boolean isDone) {
         this.description = description;
@@ -35,9 +35,9 @@ public class Task {
     /**
      * Returns the task represented by taskRepresentation
      *
-     * @param taskRepresentation the raw string representation of the task
-     * @return the Task object that is represented by the string
-     * @throws BenInvalidFileFormatException If the format of the string is invalid
+     * @param taskRepresentation The raw string representation of the task.
+     * @return The Task object that is represented by the string.
+     * @throws BenInvalidFileFormatException If the format of the string is invalid.
      */
     public static Task toTask(String taskRepresentation) throws BenInvalidFileFormatException {
         String[] sections = taskRepresentation.split("\\|");
@@ -60,18 +60,18 @@ public class Task {
     }
 
     /**
-     * Returns "X" if the task is done or whitespace if not
+     * Returns "X" if the task is done or whitespace if not.
      *
-     * @return single character string depending on whether the task is done
+     * @return Single character string depending on whether the task is done.
      */
     public String getStatusIcon() {
         return (isDone ? "X" : " ");
     }
 
     /**
-     * Marks the task as done
+     * Marks the task as done.
      *
-     * @throws BenMarkAlreadyDoneException If this.isDone is already true
+     * @throws BenMarkAlreadyDoneException If this.isDone is already true.
      */
     public void markAsDone() throws BenMarkAlreadyDoneException {
         if (this.isDone) {
@@ -82,9 +82,9 @@ public class Task {
     }
 
     /**
-     * Marks the task as undone
+     * Marks the task as undone.
      *
-     * @throws BenMarkAlreadyNotDoneException If this.isDone is already false
+     * @throws BenMarkAlreadyNotDoneException If this.isDone is already false.
      */
     public void markAsUndone() throws BenMarkAlreadyNotDoneException {
         if (this.isDone) {
@@ -98,7 +98,7 @@ public class Task {
      * Returns the representation of the task
      * to be used in hard disk storage.
      *
-     * @return the string representation
+     * @return The string representation.
      */
     public String toRepresentation() {
         return this.getStatusIcon() + "|" + this.description;

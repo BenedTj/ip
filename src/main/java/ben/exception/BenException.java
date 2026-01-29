@@ -2,9 +2,9 @@ package ben.exception;
 
 public class BenException extends Exception {
     /**
-     * Initializes a BenException object with the message
+     * Initializes a BenException object with the message.
      *
-     * @param message Exception message as a string
+     * @param message Exception message as a string.
      */
     public BenException(String message) {
         super(message);

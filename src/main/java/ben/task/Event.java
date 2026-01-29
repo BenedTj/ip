@@ -8,13 +8,13 @@ public class Event extends Task {
     /**
      * Initializes an Event object with the description,
      * a date/time to start, a date/time to end
-     * and a "false" value on isDone
+     * and a "false" value on isDone.
      *
-     * @param description text description of the Deadline task
-     * @param from the date/time when the Event task
-     *             should start as a string
-     * @param to the date/time when the Event task
-     *            should end as a string
+     * @param description Text description of the Deadline task.
+     * @param from The date/time when the Event task
+     *             should start as a string.
+     * @param to The date/time when the Event task
+     *            should end as a string.
      */
     public Event(String description, String from, String to) {
         super(description);
@@ -28,12 +28,12 @@ public class Event extends Task {
      * isDone value, a date/time to start,
      * a date/time to end, and a "false" value on isDone
      *
-     * @param description text description of the Deadline task
-     * @param isDone initial isDone value of the Deadline task
-     * @param from the date/time when the Event task
-     *             should start as a string
-     * @param to the date/time when the Event task
-     *            should end as a string
+     * @param description Text description of the Deadline task.
+     * @param isDone Initial isDone value of the Deadline task.
+     * @param from The date/time when the Event task
+     *             should start as a string.
+     * @param to The date/time when the Event task
+     *            should end as a string.
      */
     public Event(String description, boolean isDone, String from, String to) {
         super(description, isDone);

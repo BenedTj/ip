@@ -6,10 +6,10 @@ public class Deadline extends Task {
 
     /**
      * Initializes a Deadline object with the description,
-     * a deadline, and a "false" value on isDone
+     * a deadline, and a "false" value on isDone.
      *
-     * @param description text description of the Deadline task
-     * @param by the deadline of the Deadline task as a string
+     * @param description Text description of the Deadline task.
+     * @param by The deadline of the Deadline task as a string.
      */
     public Deadline(String description, String by) {
         super(description);
@@ -18,11 +18,11 @@ public class Deadline extends Task {
 
     /**
      * Initializes a Deadline object with the description,
-     * isDone value, and a deadline
+     * isDone value, and a deadline.
      *
-     * @param description text description of the Deadline task
-     * @param isDone initial isDone value of the Deadline task
-     * @param by the deadline of the Deadline task as a string
+     * @param description Text description of the Deadline task.
+     * @param isDone Initial isDone value of the Deadline task.
+     * @param by The deadline of the Deadline task as a string.
      */
     public Deadline(String description, boolean isDone, String by) {
         super(description, isDone);
