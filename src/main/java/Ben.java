@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -520,6 +521,8 @@ public class Ben {
                 System.out.println(e);
             } catch (IOException e) {
                 System.out.println("Tasks saving failed due to input/output error.");
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid DateTime input.");
             }
 
             printLine();
