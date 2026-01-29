@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -408,8 +409,11 @@ public class Ben {
                     }
                     String deadlineBy = deadlineByBuilder.toString();
 
+                    // Convert deadlineBy to LocalDatetime
+                    LocalDateTime datetimeBy = LocalDateTime.parse(deadlineBy);
+
                     // Create Deadline task
-                    Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
+                    Task deadlineTask = new Deadline(deadlineDescription, datetimeBy);
 
                     // Add to tasks
                     addTask(deadlineTask);
@@ -464,6 +468,9 @@ public class Ben {
                     }
                     String eventFrom = eventFromBuilder.toString();
 
+                    // Convert eventFrom to LocalDateTime
+                    LocalDateTime dateTimeFrom = LocalDateTime.parse(eventFrom);
+
                     // Throw an exception if there is no "/to"
                     if (toIndex == null) {
                         throw new BenMissingParameterException("/to");
@@ -482,8 +489,11 @@ public class Ben {
                     }
                     String eventTo = eventToBuilder.toString();
 
+                    // Convert eventTo to LocalDateTime
+                    LocalDateTime dateTimeTo = LocalDateTime.parse(eventTo);
+
                     // Create Event task
-                    Task eventTask = new Event(eventDescription, eventFrom, eventTo);
+                    Task eventTask = new Event(eventDescription, dateTimeFrom, dateTimeTo);
 
                     // Add to tasks
                     addTask(eventTask);
