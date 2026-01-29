@@ -55,7 +55,12 @@ public class Task {
         } else if (sections[0].equals("D")) {
             return new Deadline(sections[2], markedDone, LocalDateTime.parse(sections[3]));
         } else if (sections[0].equals("E")) {
-            return new Event(sections[2], markedDone, LocalDateTime.parse(sections[3]), LocalDateTime.parse(sections[4]));
+            return new Event(
+                    sections[2],
+                    markedDone,
+                    LocalDateTime.parse(sections[3]),
+                    LocalDateTime.parse(sections[4])
+            );
         }
 
         throw new BenInvalidFileFormatException(taskRepresentation);
