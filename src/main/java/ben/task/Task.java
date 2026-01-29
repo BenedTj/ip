@@ -40,7 +40,7 @@ public class Task {
      * @throws BenInvalidFileFormatException If the format of the string is invalid
      */
     public static Task toTask(String taskRepresentation) throws BenInvalidFileFormatException {
-        String[] sections = taskRepresentation.split("|");
+        String[] sections = taskRepresentation.split("\\|");
 
         if (sections.length < 2) {
             throw new BenInvalidFileFormatException(taskRepresentation);
