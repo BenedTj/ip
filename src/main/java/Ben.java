@@ -123,7 +123,7 @@ public class Ben {
         for (int i = 0; i < linesLength; i++) {
             // Add task to tasks
             Task task = Task.toTask(lines[i]);
-            addTask(task);
+            tasks.add(task);
         }
     }
 
