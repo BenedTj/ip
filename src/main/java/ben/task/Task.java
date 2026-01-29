@@ -42,12 +42,18 @@ public class Task {
     public static Task toTask(String taskRepresentation) throws BenInvalidFileFormatException {
         String[] sections = taskRepresentation.split("|");
 
+        if (sections.length < 2) {
+            throw new BenInvalidFileFormatException(taskRepresentation);
+        }
+
+        boolean markedDone = sections[1].equals("X");
+
         if (sections[0].equals("T")) {
-            return new Todo(sections[1]);
+            return new Todo(sections[2], markedDone);
         } else if (sections[0].equals("D")) {
-            return new Deadline(sections[1], sections[2]);
+            return new Deadline(sections[2], markedDone, sections[3]);
         } else if (sections[0].equals("E")) {
-            return new Event(sections[1], sections[2], sections[3]);
+            return new Event(sections[2], markedDone, sections[3], sections[4]);
         }
 
         throw new BenInvalidFileFormatException(taskRepresentation);
