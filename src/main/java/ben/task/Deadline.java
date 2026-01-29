@@ -34,11 +34,12 @@ public class Deadline extends Task {
 
     @Override
     public String toRepresentation() {
-        return "D|" + super.toRepresentation() + "|" + this.by.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm"));
+        return "D|" + super.toRepresentation() + "|" + this.by;
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.by + ")";
+        return "[D]" + super.toString() + " (by: "
+                + this.by.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm")) + ")";
     }
 }
