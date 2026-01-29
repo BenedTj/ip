@@ -4,15 +4,15 @@ todo borrow book
 mark 103
 list
 deadline
-deadline return book /by Sunday
+deadline return book /by 2019-12-01 1800
 list
 event
 event project meeting
 event project meeting /from
 event project meeting /from /to
-event project meeting /from Mon 2pm
-event project meeting /from Mon 2pm /to
-event project meeting /from Mon 2pm /to 4pm
+event project meeting /from 2019-12-01 1800
+event project meeting /from 2019-12-01 1800 /to
+event project meeting /from 2019-12-01 1800 /to 2019-12-03 1800
 list
 blah
 deadline do homework /by no idea :-p

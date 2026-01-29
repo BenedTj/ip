@@ -10,6 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,6 +20,7 @@ public class Ben {
     private static final String NAME = "Ben";
     private static final String LINE = "____________________________________________________________";
     private static final String FILE_PATH = "./data/ben/tasks.txt";
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static ArrayList<Task> tasks = new ArrayList<>();
 
     /**
@@ -408,8 +412,11 @@ public class Ben {
                     }
                     String deadlineBy = deadlineByBuilder.toString();
 
+                    // Convert deadlineBy to LocalDatetime
+                    LocalDateTime datetimeBy = LocalDateTime.parse(deadlineBy, dateTimeFormatter);
+
                     // Create Deadline task
-                    Task deadlineTask = new Deadline(deadlineDescription, deadlineBy);
+                    Task deadlineTask = new Deadline(deadlineDescription, datetimeBy);
 
                     // Add to tasks
                     addTask(deadlineTask);
@@ -464,6 +471,9 @@ public class Ben {
                     }
                     String eventFrom = eventFromBuilder.toString();
 
+                    // Convert eventFrom to LocalDateTime
+                    LocalDateTime dateTimeFrom = LocalDateTime.parse(eventFrom, dateTimeFormatter);
+
                     // Throw an exception if there is no "/to"
                     if (toIndex == null) {
                         throw new BenMissingParameterException("/to");
@@ -482,8 +492,11 @@ public class Ben {
                     }
                     String eventTo = eventToBuilder.toString();
 
+                    // Convert eventTo to LocalDateTime
+                    LocalDateTime dateTimeTo = LocalDateTime.parse(eventTo, dateTimeFormatter);
+
                     // Create Event task
-                    Task eventTask = new Event(eventDescription, eventFrom, eventTo);
+                    Task eventTask = new Event(eventDescription, dateTimeFrom, dateTimeTo);
 
                     // Add to tasks
                     addTask(eventTask);
@@ -508,6 +521,8 @@ public class Ben {
                 System.out.println(e);
             } catch (IOException e) {
                 System.out.println("Tasks saving failed due to input/output error.");
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid DateTime input.");
             }
 
             printLine();
