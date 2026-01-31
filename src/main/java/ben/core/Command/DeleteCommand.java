@@ -7,8 +7,6 @@ import ben.exception.BenFileIOException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.task.Task;
 
-import java.util.ArrayList;
-
 // The class for the delete command.
 public class DeleteCommand extends Command {
     private int indexNumber;

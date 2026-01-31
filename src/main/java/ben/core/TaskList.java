@@ -1,6 +1,5 @@
 package ben.core;
 
-import ben.exception.BenDatetimeParseException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
