@@ -43,4 +43,6 @@ delete 10
 list
 delete 2
 list
+delete 1
+list
 bye
