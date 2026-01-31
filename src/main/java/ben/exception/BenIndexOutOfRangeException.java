@@ -11,11 +11,11 @@ public class BenIndexOutOfRangeException extends BenException {
 
     /**
      * Initializes a BenIndexOutOfRangeException object
-     * with the default message that mentions the index number.
+     * with the default message that mentions the index.
      *
-     * @param indexNumber The index number of the element.
+     * @param index The index of the element.
      */
-    public BenIndexOutOfRangeException(int indexNumber) {
-        super("The index " + indexNumber + " is out of range and not found.");
+    public BenIndexOutOfRangeException(int index) {
+        super("The index " + (index + 1) + " is out of range and not found.");
     }
 }
