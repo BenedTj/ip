@@ -1,5 +1,9 @@
 package ben.exception;
 
+/**
+ * The class that represents a BenException
+ * for an invalid value as a command parameter.
+ */
 public class BenInvalidParameterException extends BenException {
     /**
      * Initializes a BenInvalidParameterException object

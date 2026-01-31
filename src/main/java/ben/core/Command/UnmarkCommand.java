@@ -6,6 +6,7 @@ import ben.core.Ui;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
+// the class for the unmark command.
 public class UnmarkCommand extends Command {
     private int indexNumber;
 

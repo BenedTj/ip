@@ -6,7 +6,7 @@ import ben.exception.BenMarkAlreadyNotDoneException;
 
 import java.time.LocalDateTime;
 
-// Class to represent tasks for the list tasks
+// Class to represent tasks for the list tasks.
 public class Task {
     protected String description;
     protected boolean isDone;

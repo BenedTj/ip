@@ -5,6 +5,7 @@ import ben.core.TaskList;
 import ben.core.Ui;
 import ben.exception.BenException;
 
+// The class that runs the Ben program.
 public class Ben {
     private Storage storage;
     private TaskList tasks;

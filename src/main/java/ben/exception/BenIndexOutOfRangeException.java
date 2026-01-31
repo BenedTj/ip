@@ -1,5 +1,9 @@
 package ben.exception;
 
+/**
+ * The class that represents a BenException
+ * that is caused by range out of bound exceptions.
+ */
 public class BenIndexOutOfRangeException extends BenException {
     /**
      * Initializes a BenIndexOutOfRangeException object

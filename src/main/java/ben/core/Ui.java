@@ -5,6 +5,7 @@ import ben.task.Task;
 
 import java.util.Scanner;
 
+// The class that represents the UI of the program.
 public class Ui {
     private static final String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"

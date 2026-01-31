@@ -5,6 +5,7 @@ import ben.core.TaskList;
 import ben.core.Ui;
 import ben.task.Todo;
 
+// The class for the todo command.
 public class TodoCommand extends Command {
     private String todoDescription;
 

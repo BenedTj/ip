@@ -1,5 +1,9 @@
 package ben.exception;
 
+/**
+ * The class that represents a BenException for a line
+ * with an incorrect format in a saved file.
+ */
 public class BenInvalidFileFormatException extends BenException {
     /**
      * Initializes a BenInvalidFileFormatException object

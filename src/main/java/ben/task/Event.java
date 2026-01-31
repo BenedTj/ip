@@ -3,7 +3,7 @@ package ben.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-// Class to represent tasks that need to start and end at specific dates/time
+// Class to represent tasks that need to start and end at specific dates/time.
 public class Event extends Task {
     protected LocalDateTime from;
     protected LocalDateTime to;

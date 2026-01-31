@@ -10,6 +10,7 @@ import ben.exception.BenMarkAlreadyNotDoneException;
 
 import java.io.IOException;
 
+// The class that is the base class for commands.
 public abstract class Command {
     protected boolean isExit;
 
