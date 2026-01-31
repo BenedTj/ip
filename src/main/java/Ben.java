@@ -36,6 +36,9 @@ public class Ben {
         }
     }
 
+    /**
+     * Runs the program.
+     */
     public void run() {
         // Show welcome message
         this.ui.showWelcome();
