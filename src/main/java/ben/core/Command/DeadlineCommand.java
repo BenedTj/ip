@@ -1,0 +1,37 @@
+package ben.core.Command;
+
+import ben.core.Storage;
+import ben.core.TaskList;
+import ben.core.Ui;
+import ben.task.Deadline;
+
+import java.time.LocalDateTime;
+
+public class DeadlineCommand extends Command {
+    private String deadlineDescription;
+    private LocalDateTime by;
+
+    /**
+     * Initializes a DeadlineCommand object
+     * where isExit is initially false
+     * and there is a deadlineDescription and by parameter.
+     *
+     * @param deadlineDescription The description of the Deadline
+     *                        object.
+     * @param by The deadline for the Deadline object.
+     */
+    public DeadlineCommand(String deadlineDescription, LocalDateTime by) {
+        super();
+
+        this.deadlineDescription = deadlineDescription;
+        this.by = by;
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+        Deadline newTask = new Deadline(this.deadlineDescription, this.by);
+        tasks.addTask(newTask);
+
+        ui.showTaskAddedMessage(newTask, tasks.getTasksLength());
+    }
+}
