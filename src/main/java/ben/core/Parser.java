@@ -203,6 +203,21 @@ public class Parser {
                 } catch (NumberFormatException e) {
                     throw new BenInvalidParameterException(commandParameters[1]);
                 }
+            } else if (command.equals("find")) {
+                // Throw an exception if there is no query parameter
+                if (commandParametersLength <= 1) {
+                    throw new BenEmptyParameterValueException("find query", "event");
+                }
+
+                // Obtain the find query parameter
+                StringBuilder findQueryBuilder = new StringBuilder(commandParameters[1]);
+                for (int i = 2; i < commandParametersLength; i++) {
+                    findQueryBuilder.append(" ");
+                    findQueryBuilder.append(commandParameters[i]);
+                }
+                String findQuery = findQueryBuilder.toString();
+
+                return new FindCommand(findQuery);
             } else {
                 throw new BenInvalidCommandException();
             }
