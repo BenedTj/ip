@@ -6,6 +6,8 @@ list
 deadline
 deadline return book /by 2019-12-01 1800
 list
+find borrow
+find return
 event
 event project meeting
 event project meeting /from
@@ -17,14 +19,17 @@ list
 blah
 deadline do homework /by no idea :-p
 list
+find do
 mark 1
 mark 1
 list
 unmark 1
 list
+find project
 mark 2
 list
 unmark 2
+find book
 list
 mark 3
 unmark 2
@@ -38,11 +43,15 @@ list
 unmark 4
 list
 delete 3
+find project meeting
 list
 delete 10
+find book
 list
 delete 2
+find book
 list
 delete 1
+find homework
 list
 bye
