@@ -34,6 +34,10 @@ public class Task {
         this.isDone = isDone;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     /**
      * Returns the task represented by taskRepresentation
      *
