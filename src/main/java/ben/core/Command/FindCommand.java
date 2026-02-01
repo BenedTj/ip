@@ -12,6 +12,14 @@ import java.util.List;
 public class FindCommand extends Command {
     private String findQuery;
 
+    /**
+     * Initializes a FindCommand object
+     * where isExit is initially false
+     * and there is a certain findQuery.
+     *
+     * @param findQuery The query for filtering
+     *                  using find.
+     */
     public FindCommand(String findQuery) {
         this.findQuery = findQuery;
     }
