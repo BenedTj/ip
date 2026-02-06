@@ -1,15 +1,27 @@
+package ben;
+
 import ben.core.Command.Command;
 import ben.core.Parser;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.Ui;
 import ben.exception.BenException;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 // The class that runs the Ben program.
-public class Ben {
+public class Ben extends Application {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+
+    /**
+     * Initializes a Ben object with the
+     * default saving file.
+     */
+    public Ben() {
+        this("./data/ben/tasks.txt");
+    }
 
     /**
      * Initializes a Ben object
@@ -35,6 +47,12 @@ public class Ben {
             ui.showBenException(e);
             tasks = new TaskList();
         }
+    }
+
+    @Override
+    public void start(Stage stage) {
+        // Actual JavaFX starting code needs to be run here
+        new Ben().run();
     }
 
     /**
@@ -65,6 +83,6 @@ public class Ben {
     }
 
     public static void main(String[] args) {
-        new Ben("./data/ben/tasks.txt").run();
+        new Ben().run();
     }
 }
