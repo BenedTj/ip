@@ -1,3 +1,4 @@
+import ben.Ben;
 import javafx.application.Application;
 
 // The class that launches JavaFX
