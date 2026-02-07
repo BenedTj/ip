@@ -1,8 +1,9 @@
-package ben.core.Command;
+package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
@@ -25,15 +26,25 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)
+    public String executeBase(TaskList tasks, BaseUi ui, Storage storage)
             throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
         // Get index
         int index = indexNumber - 1;
 
         tasks.markNotDone(index);
 
-        // Print confirmation message
-        ui.showMessage("Ok, I've marked this task as not done yet:");
-        ui.showMessage("  " + tasks.getTask(index));
+        // Construct mesasge
+        StringBuilder messageBuilder = new StringBuilder("Ok, I've marked this task as not done yet:");
+        messageBuilder.append(System.lineSeparator());
+        messageBuilder.append("  " + tasks.getTask(index));
+
+        return messageBuilder.toString();
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage)
+            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
+        String message = this.executeBase(tasks, ui, storage);
+        ui.showMessage(message);
     }
 }

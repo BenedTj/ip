@@ -1,8 +1,9 @@
-package ben.core.Command;
+package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.task.Task;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String executeBase(TaskList tasks, BaseUi ui, Storage storage) {
         // Get array list of tasks
         ArrayList<Task> taskAsArrayList = tasks.getTasks();
 
@@ -39,11 +40,20 @@ public class FindCommand extends Command {
         // Get length of the filtered list
         int filteredTasksLength = filteredTasks.size();
 
-        // Print messages
-        ui.showMessage("Here are the matching tasks in your list:");
+        // Construct message
+        StringBuilder messageBuilder = new StringBuilder("Here are the matching tasks in your list:");
         for (int index = 0; index < filteredTasksLength; index++) {
             int currentIndex = index + 1;
-            ui.showMessage(currentIndex + "." + filteredTasks.get(index));
+            messageBuilder.append(System.lineSeparator());
+            messageBuilder.append(currentIndex + "." + filteredTasks.get(index));
         }
+
+        return messageBuilder.toString();
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+        String message = this.executeBase(tasks, ui, storage);
+        ui.showMessage(message);
     }
 }

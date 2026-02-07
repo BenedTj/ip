@@ -1,8 +1,9 @@
-package ben.core.Command;
+package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.exception.BenFileIOException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.task.Task;
@@ -26,7 +27,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)
+    public String executeBase(TaskList tasks, BaseUi ui, Storage storage)
             throws BenIndexOutOfRangeException, BenFileIOException {
         // Get index and task to delete
         int index = indexNumber - 1;
@@ -42,12 +43,24 @@ public class DeleteCommand extends Command {
         // Delete task
         tasks.deleteTask(index);
 
-        ui.showMessage("Noted. I've removed this task:");
-        ui.showMessage("  " + taskToDelete);
-        ui.showMessage("Now you have " + tasks.getTasksLength() + " tasks in the list.");
-
         // Update saved tasks
         String savedContent = tasks.getTasksRepresentation();
         storage.overwriteRawData(savedContent);
+
+        // Construct message
+        StringBuilder messageBuilder = new StringBuilder("Noted. I've removed this task:");
+        messageBuilder.append(System.lineSeparator());
+        messageBuilder.append("  " + taskToDelete);
+        messageBuilder.append(System.lineSeparator());
+        messageBuilder.append("Now you have " + tasks.getTasksLength() + " tasks in the list.");
+
+        return messageBuilder.toString();
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage)
+            throws BenIndexOutOfRangeException, BenFileIOException {
+        String message = this.executeBase(tasks, ui, storage);
+        ui.showMessage(message);
     }
 }

@@ -1,8 +1,9 @@
-package ben.core.Command;
+package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.task.Event;
 
 import java.time.LocalDateTime;
@@ -32,10 +33,17 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String executeBase(TaskList tasks, BaseUi ui, Storage storage) {
         Event newTask = new Event(this.eventDescription, this.from, this.to);
         tasks.addTask(newTask);
 
-        ui.showTaskAddedMessage(newTask, tasks.getTasksLength());
+        String message = ui.showTaskAddedMessageBase(newTask, tasks.getTasksLength());
+        return message;
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+        String message = this.executeBase(tasks, ui, storage);
+        ui.showMessage(message);
     }
 }

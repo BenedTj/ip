@@ -1,8 +1,9 @@
-package ben.core.Command;
+package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 
 // The class for the bye command
 public class ByeCommand extends Command {
@@ -15,9 +16,16 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.showMessage("Bye. Hope to see you again soon!");
-
+    public String executeBase(TaskList tasks, BaseUi ui, Storage storage) {
+        String message = "Bye. Hope to see you again soon!";
         this.isExit = true;
+
+        return message;
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+        String message = this.executeBase(tasks, ui, storage);
+        ui.showMessage(message);
     }
 }
