@@ -1,10 +1,10 @@
 package ben;
 
-import ben.core.Command.Command;
 import ben.core.Parser;
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.Ui;
+import ben.core.command.Command;
+import ben.core.ui.Ui;
 import ben.exception.BenException;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -53,6 +53,18 @@ public class Ben extends Application {
     public void start(Stage stage) {
         // Actual JavaFX starting code needs to be run here
         new Ben().run();
+    }
+
+    public String getResponse(String userInput) {
+        try {
+            Command c = Parser.parse(userInput);
+            String responseMessage = c.executeBase(this.tasks, this.ui, this.storage);
+            String tasksRepresentation = this.tasks.getTasksRepresentation();
+            this.storage.overwriteRawData(tasksRepresentation);
+            return ui.showMessageBase(responseMessage);
+        } catch (BenException e) {
+            return ui.showBenExceptionBase(e);
+        }
     }
 
     /**
