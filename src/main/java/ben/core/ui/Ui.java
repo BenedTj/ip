@@ -1,4 +1,4 @@
-package ben.core;
+package ben.core.ui;
 
 import ben.exception.BenException;
 import ben.task.Task;
@@ -6,7 +6,7 @@ import ben.task.Task;
 import java.util.Scanner;
 
 // The class that represents the UI of the program.
-public class Ui {
+public class Ui extends BaseUi {
     private static final String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
@@ -44,8 +44,9 @@ public class Ui {
     public void showWelcome() {
         System.out.println("Hello from\n" + LOGO);
         this.showLine();
-        System.out.println("Hello! I'm Ben");
-        System.out.println("What can I do for you?");
+
+        String welcomeMessage = super.showWelcomeBase();
+        System.out.println(welcomeMessage);
     }
 
     /**
@@ -64,9 +65,8 @@ public class Ui {
      * @param tasksSize The current size or length of tasks.
      */
     public void showTaskAddedMessage(Task task, int tasksSize) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + tasksSize + " tasks in the list.");
+        String message = super.showTaskAddedMessageBase(task, tasksSize);
+        System.out.println(message);
     }
 
     /**
@@ -76,6 +76,7 @@ public class Ui {
      *                     should be printed.
      */
     public void showBenException(BenException benException) {
-        System.out.println(benException.toString());
+        String message = super.showBenExceptionBase(benException);
+        System.out.println(message);
     }
 }
