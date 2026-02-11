@@ -139,7 +139,7 @@ public class TaskList {
      * @throws BenIndexOutOfRangeException If indexNumber exceeds the current length of tasks.
      */
     public void markNotDone(int index)
-        throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
+            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
         // Obtain task
         Task task = this.getTask(index);
 
