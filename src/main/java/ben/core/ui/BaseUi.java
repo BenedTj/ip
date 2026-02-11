@@ -3,6 +3,10 @@ package ben.core.ui;
 import ben.exception.BenException;
 import ben.task.Task;
 
+/**
+ * The class for the base UI functionality
+ * without any printing.
+ */
 public class BaseUi {
     /**
      * Returns the welcome message.

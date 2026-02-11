@@ -1,11 +1,13 @@
 package ben.core.ui;
 
+import java.util.Scanner;
+
 import ben.exception.BenException;
 import ben.task.Task;
 
-import java.util.Scanner;
-
-// The class that represents the UI of the program.
+/**
+ * The class that represents the UI of the program.
+ */
 public class Ui extends BaseUi {
     private static final String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
