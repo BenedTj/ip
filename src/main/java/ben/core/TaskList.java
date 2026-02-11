@@ -1,13 +1,13 @@
 package ben.core;
 
+import java.util.ArrayList;
+
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 import ben.task.Task;
 
-import java.util.ArrayList;
-
-/*
+/**
  * The class that represents the list of tasks.
  */
 public class TaskList {
