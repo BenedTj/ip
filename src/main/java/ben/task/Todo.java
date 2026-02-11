@@ -1,6 +1,8 @@
 package ben.task;
 
-// Class to represent tasks without any date or time attached.
+/**
+ * Class to represent tasks without any date or time attached.
+ */
 public class Todo extends Task {
     /**
      * Initializes a Todo object with the description and a "false" value

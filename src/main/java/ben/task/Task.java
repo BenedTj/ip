@@ -6,7 +6,9 @@ import ben.exception.BenInvalidFileFormatException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
-// Class to represent tasks for the list tasks.
+/**
+ * Class to represent tasks for the list tasks.
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
