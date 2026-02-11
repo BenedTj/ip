@@ -3,7 +3,9 @@ package ben.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-// Class to represent tasks that need to be done before a deadline
+/**
+ * Class to represent tasks that need to be done before a deadline
+ */
 public class Deadline extends Task {
     protected LocalDateTime by;
 
