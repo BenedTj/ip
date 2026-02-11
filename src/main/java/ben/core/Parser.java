@@ -1,5 +1,9 @@
 package ben.core;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import ben.core.command.ByeCommand;
 import ben.core.command.Command;
 import ben.core.command.DeadlineCommand;
@@ -15,10 +19,6 @@ import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenInvalidCommandException;
 import ben.exception.BenInvalidParameterException;
 import ben.exception.BenMissingParameterException;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 /**
  * The class that handles the user input parsing functionality.
