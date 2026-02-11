@@ -14,7 +14,7 @@ public class Ui extends BaseUi {
             + "| | | | | | | |/ / _ \\\n"
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
-    private final static String LINE = "____________________________________________________________";
+    private static final String LINE = "____________________________________________________________";
     private Scanner scanner;
 
     /**
