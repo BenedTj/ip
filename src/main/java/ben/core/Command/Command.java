@@ -4,7 +4,7 @@ import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
 import ben.core.ui.Ui;
-import ben.exception.BenFileIOException;
+import ben.exception.BenFileIoException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
@@ -42,7 +42,7 @@ public abstract class Command {
             throws BenMarkAlreadyDoneException,
             BenMarkAlreadyNotDoneException,
             BenIndexOutOfRangeException,
-            BenFileIOException;
+            BenFileIoException;
 
     /**
      * Executes the command using interactions with other
@@ -62,7 +62,7 @@ public abstract class Command {
             throws BenMarkAlreadyDoneException,
             BenMarkAlreadyNotDoneException,
             BenIndexOutOfRangeException,
-            BenFileIOException;
+            BenFileIoException;
 
     /**
      * Returns whether the program should exit.

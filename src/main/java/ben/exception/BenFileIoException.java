@@ -4,12 +4,12 @@ package ben.exception;
  * The class that represents BenException
  * that is caused by a file input/output exception.
  */
-public class BenFileIOException extends BenException {
+public class BenFileIoException extends BenException {
     /**
-     * Initializes a BenFileIOException object
+     * Initializes a BenFileIoException object
      * with the default message.
      */
-    public BenFileIOException() {
+    public BenFileIoException() {
         super("Tasks saving failed due to input/output error.");
     }
 }

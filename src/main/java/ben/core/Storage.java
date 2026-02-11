@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import ben.exception.BenFileIOException;
+import ben.exception.BenFileIoException;
 import ben.exception.BenInvalidFileFormatException;
 import ben.task.Task;
 
@@ -33,10 +33,10 @@ public class Storage {
      * and create the file if it does not exist.
      *
      * @return The text content of the file.
-     * @throws BenFileIOException If an input/output runtime exception occurs.
+     * @throws BenFileIoException If an input/output runtime exception occurs.
      */
     public String initializeRawData()
-            throws BenFileIOException {
+            throws BenFileIoException {
         File file = new File(this.filePath);
         try {
             if (file.exists()) {
@@ -68,7 +68,7 @@ public class Storage {
                 return "";
             }
         } catch (IOException e) {
-            throw new BenFileIOException();
+            throw new BenFileIoException();
         }
     }
 
@@ -77,15 +77,15 @@ public class Storage {
      * the string content.
      *
      * @param content The content to overwrite the file with.
-     * @throws BenFileIOException If a runtime input/output exception is thrown.
+     * @throws BenFileIoException If a runtime input/output exception is thrown.
      */
-    public void overwriteRawData(String content) throws BenFileIOException {
+    public void overwriteRawData(String content) throws BenFileIoException {
         try {
             FileWriter fileWriter = new FileWriter(this.filePath, false);
             fileWriter.write(content);
             fileWriter.close();
         } catch (IOException e) {
-            throw new BenFileIOException();
+            throw new BenFileIoException();
         }
     }
 
