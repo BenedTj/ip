@@ -4,16 +4,14 @@ import ben.core.Parser;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.command.Command;
-import ben.core.ui.Ui;
+import ben.core.ui.BaseUi;
 import ben.exception.BenException;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
 // The class that runs the Ben program.
-public class Ben extends Application {
+public class Ben {
     private Storage storage;
     private TaskList tasks;
-    private Ui ui;
+    private BaseUi ui;
 
     /**
      * Initializes a Ben object with the
@@ -32,7 +30,7 @@ public class Ben extends Application {
      */
     public Ben(String filePath) {
         // Initializes Ui, Storage and TaskList object.
-        this.ui = new Ui();
+        this.ui = new BaseUi();
         this.storage = new Storage(filePath);
         this.tasks = new TaskList();
 
@@ -44,15 +42,9 @@ public class Ben extends Application {
             }
         } catch (BenException e) {
             // If an exception is thrown, fallback to an empty tasks.
-            ui.showBenException(e);
+            ui.showBenExceptionBase(e);
             tasks = new TaskList();
         }
-    }
-
-    @Override
-    public void start(Stage stage) {
-        // Actual JavaFX starting code needs to be run here
-        new Ben().run();
     }
 
     public String getResponse(String userInput) {
@@ -65,36 +57,5 @@ public class Ben extends Application {
         } catch (BenException e) {
             return ui.showBenExceptionBase(e);
         }
-    }
-
-    /**
-     * Runs the program.
-     */
-    public void run() {
-        // Show welcome message
-        this.ui.showWelcome();
-        this.ui.showLine();
-
-        boolean isExit = false;
-
-        while (!isExit) {
-            try {
-                String fullCommand = this.ui.readCommand();
-                this.ui.showLine();
-                Command c = Parser.parse(fullCommand);
-                c.execute(this.tasks, this.ui, this.storage);
-                String tasksRepresentation = this.tasks.getTasksRepresentation();
-                this.storage.overwriteRawData(tasksRepresentation);
-                isExit = c.isExit();
-            } catch (BenException e) {
-                this.ui.showBenException(e);
-            } finally {
-                this.ui.showLine();
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        new Ben().run();
     }
 }
