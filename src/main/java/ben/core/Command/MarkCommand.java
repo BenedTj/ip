@@ -7,7 +7,9 @@ import ben.core.ui.Ui;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
 
-// The class for the mark command.
+/**
+ The class for the mark command.
+ */
 public class MarkCommand extends Command {
     private int indexNumber;
 

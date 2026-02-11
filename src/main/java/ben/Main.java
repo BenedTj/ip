@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-// The main class for launching JavaFX
+/**
+ The main class for launching JavaFX
+ */
 public class Main extends Application {
     private Ben ben = new Ben();
 

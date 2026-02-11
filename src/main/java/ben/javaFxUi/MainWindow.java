@@ -9,7 +9,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-// Controller for the main window GUI
+/**
+ Controller for the main window GUI
+ */
 public class MainWindow extends AnchorPane {
     @FXML
     private ScrollPane scrollPane;

@@ -7,7 +7,9 @@ import ben.task.Task;
 
 import java.util.ArrayList;
 
-// The class that represents the list of tasks.
+/*
+ The class that represents the list of tasks.
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
 

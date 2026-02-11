@@ -1,6 +1,8 @@
 package ben.exception;
 
-// The class that represents the base class for BenException.
+/**
+ The class that represents the base class for BenException.
+ */
 public class BenException extends Exception {
     /**
      * Initializes a BenException object with the message.

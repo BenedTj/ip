@@ -8,7 +8,9 @@ import ben.task.Deadline;
 
 import java.time.LocalDateTime;
 
-// The class for the deadline command.
+/**
+ The class for the deadline command.
+ */
 public class DeadlineCommand extends Command {
     private String deadlineDescription;
     private LocalDateTime by;

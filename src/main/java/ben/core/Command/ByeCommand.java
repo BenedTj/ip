@@ -5,7 +5,9 @@ import ben.core.TaskList;
 import ben.core.ui.BaseUi;
 import ben.core.ui.Ui;
 
-// The class for the bye command
+/**
+ The class for the bye command
+ */
 public class ByeCommand extends Command {
     /**
      * Initializes a ByeCommand object

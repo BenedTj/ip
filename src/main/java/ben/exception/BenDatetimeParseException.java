@@ -1,6 +1,8 @@
 package ben.exception;
 
-// The class that represents BenExceptions for Datetime parsing.
+/**
+ The class that represents BenExceptions for Datetime parsing.
+ */
 public class BenDatetimeParseException extends BenException {
     /**
      * Initializes a BenDatetimeParseExeption object

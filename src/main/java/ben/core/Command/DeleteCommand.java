@@ -8,7 +8,9 @@ import ben.exception.BenFileIOException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.task.Task;
 
-// The class for the delete command.
+/**
+ The class for the delete command.
+ */
 public class DeleteCommand extends Command {
     private int indexNumber;
 

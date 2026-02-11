@@ -7,7 +7,9 @@ import ben.core.command.Command;
 import ben.core.ui.BaseUi;
 import ben.exception.BenException;
 
-// The class that runs the Ben program.
+/**
+ The class that runs the Ben program.
+ */
 public class Ben {
     private Storage storage;
     private TaskList tasks;

@@ -1,6 +1,8 @@
 package ben.exception;
 
-// The class that represents BenExceptions for when command parameter value is empty.
+/**
+ The class that represents BenExceptions for when command parameter value is empty.
+ */
 public class BenEmptyParameterValueException extends BenException {
     /**
      * Initializes a BenEmptyDescriptionException object
