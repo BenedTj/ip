@@ -1,9 +1,5 @@
 package ben.core;
 
-import ben.exception.BenFileIOException;
-import ben.exception.BenInvalidFileFormatException;
-import ben.task.Task;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import ben.exception.BenFileIOException;
+import ben.exception.BenInvalidFileFormatException;
+import ben.task.Task;
 
 /**
  * The class that represent storage and saving.

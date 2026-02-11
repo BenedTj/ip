@@ -1,12 +1,12 @@
 package ben.core.command;
 
+import java.time.LocalDateTime;
+
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
 import ben.core.ui.Ui;
 import ben.task.Event;
-
-import java.time.LocalDateTime;
 
 /**
  * The class for the event command.

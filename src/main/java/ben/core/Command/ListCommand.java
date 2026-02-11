@@ -1,12 +1,12 @@
 package ben.core.command;
 
+import java.util.ArrayList;
+
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
 import ben.core.ui.Ui;
 import ben.task.Task;
-
-import java.util.ArrayList;
 
 /**
  * The class for the list command.

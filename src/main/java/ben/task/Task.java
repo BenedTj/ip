@@ -1,10 +1,10 @@
 package ben.task;
 
+import java.time.LocalDateTime;
+
 import ben.exception.BenInvalidFileFormatException;
 import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
-
-import java.time.LocalDateTime;
 
 // Class to represent tasks for the list tasks.
 public class Task {
