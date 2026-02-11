@@ -9,7 +9,7 @@ import ben.task.Event;
 import java.time.LocalDateTime;
 
 /**
- The class for the event command.
+ * The class for the event command.
  */
 public class EventCommand extends Command {
     private String eventDescription;

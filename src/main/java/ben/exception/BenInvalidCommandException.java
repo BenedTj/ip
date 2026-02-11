@@ -1,7 +1,7 @@
 package ben.exception;
 
 /**
- The class that represents a BenException for an unknown command.
+ * The class that represents a BenException for an unknown command.
  */
 public class BenInvalidCommandException extends BenException {
     /**

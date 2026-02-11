@@ -9,7 +9,7 @@ import ben.exception.BenMarkAlreadyNotDoneException;
 
 /**
  * The class for the unmark command.
-  */
+ */
 public class UnmarkCommand extends Command {
     private int indexNumber;
 

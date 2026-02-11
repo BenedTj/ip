@@ -9,7 +9,7 @@ import ben.task.Task;
 import java.util.ArrayList;
 
 /**
- The class for the list command.
+ * The class for the list command.
  */
 public class ListCommand extends Command {
     /**

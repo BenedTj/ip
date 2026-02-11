@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- The class that represent storage and saving.
+ * The class that represent storage and saving.
  */
 public class Storage {
     private String filePath;

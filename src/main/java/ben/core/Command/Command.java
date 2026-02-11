@@ -10,7 +10,7 @@ import ben.exception.BenMarkAlreadyDoneException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
 /**
- The class that is the base class for commands.
+ * The class that is the base class for commands.
  */
 public abstract class Command {
     protected boolean isExit;

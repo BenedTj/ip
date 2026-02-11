@@ -1,7 +1,7 @@
 package ben.exception;
 
 /**
- The class that represents BenExceptions caused by a command parameter not specified.
+ * The class that represents BenExceptions caused by a command parameter not specified.
  */
 public class BenMissingParameterException extends BenException {
     /**

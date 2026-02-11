@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- The class for the find command.
+ * The class for the find command.
  */
 public class FindCommand extends Command {
     private String findQuery;
