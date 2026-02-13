@@ -69,6 +69,8 @@ public class Task {
                     LocalDateTime.parse(sections[3]),
                     LocalDateTime.parse(sections[4])
             );
+        } else if (sections[0].equals("F")) {
+            return new FixedTask(sections[2], markedDone, sections[3]);
         }
 
         throw new BenInvalidFileFormatException(taskRepresentation);
