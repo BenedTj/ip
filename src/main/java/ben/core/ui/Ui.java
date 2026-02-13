@@ -7,7 +7,7 @@ import ben.task.Task;
  * The class for the base UI functionality
  * without any printing.
  */
-public class BaseUi {
+public class Ui {
     /**
      * Returns the welcome message.
      *

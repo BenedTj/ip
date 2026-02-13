@@ -4,7 +4,7 @@ import ben.core.Parser;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.command.Command;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.exception.BenException;
 
 /**
@@ -13,7 +13,7 @@ import ben.exception.BenException;
 public class Ben {
     private Storage storage;
     private TaskList tasks;
-    private BaseUi ui;
+    private Ui ui;
 
     /**
      * Initializes a Ben object with the
@@ -32,7 +32,7 @@ public class Ben {
      */
     public Ben(String filePath) {
         // Initializes Ui, Storage and TaskList object.
-        this.ui = new BaseUi();
+        this.ui = new Ui();
         this.storage = new Storage(filePath);
         this.tasks = new TaskList();
 

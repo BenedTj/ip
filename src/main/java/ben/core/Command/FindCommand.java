@@ -5,7 +5,7 @@ import java.util.List;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.task.Task;
 
 /**
@@ -27,7 +27,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, BaseUi ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         // Get array list of tasks
         ArrayList<Task> taskAsArrayList = tasks.getTasks();
 

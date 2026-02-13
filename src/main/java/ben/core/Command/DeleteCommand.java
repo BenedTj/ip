@@ -2,7 +2,7 @@ package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.exception.BenFileIoException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.task.Task;
@@ -28,7 +28,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, BaseUi ui, Storage storage)
+    public String execute(TaskList tasks, Ui ui, Storage storage)
             throws BenIndexOutOfRangeException, BenFileIoException {
         // Get index and task to delete
         int index = indexNumber - 1;

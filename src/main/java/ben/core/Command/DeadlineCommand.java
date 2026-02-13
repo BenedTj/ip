@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.task.Deadline;
 /**
  * The class for the deadline command.
@@ -30,7 +30,7 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, BaseUi ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Deadline newTask = new Deadline(this.deadlineDescription, this.by);
         tasks.addTask(newTask);
 

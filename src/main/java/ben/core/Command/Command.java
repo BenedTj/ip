@@ -2,7 +2,7 @@ package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.exception.BenFileIoException;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
@@ -37,7 +37,7 @@ public abstract class Command {
      * @throws BenIndexOutOfRangeException If a command is trying to access an index that is
      *                                     out of the range of values available in tasks.
      */
-    public abstract String execute(TaskList tasks, BaseUi ui, Storage storage)
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage)
             throws BenMarkAlreadyDoneException,
             BenMarkAlreadyNotDoneException,
             BenIndexOutOfRangeException,

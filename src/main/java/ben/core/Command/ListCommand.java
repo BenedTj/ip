@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.BaseUi;
+import ben.core.ui.Ui;
 import ben.task.Task;
 
 /**
@@ -20,7 +20,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, BaseUi ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         // Get array list of tasks
         ArrayList<Task> taskAsArrayList = tasks.getTasks();
         int tasksLength = taskAsArrayList.size();
