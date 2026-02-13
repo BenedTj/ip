@@ -32,6 +32,8 @@ public class Task {
      * @param isDone Initial isDone value of task.
      */
     public Task(String description, boolean isDone) {
+        assert !description.equals("");
+
         this.description = description;
         this.isDone = isDone;
     }
