@@ -34,7 +34,7 @@ public class UnmarkCommand extends Command {
 
         tasks.markNotDone(index);
 
-        // Construct mesasge
+        // Construct message
         StringBuilder messageBuilder = new StringBuilder("Ok, I've marked this task as not done yet:");
         messageBuilder.append(System.lineSeparator());
         messageBuilder.append("  " + tasks.getTask(index));
