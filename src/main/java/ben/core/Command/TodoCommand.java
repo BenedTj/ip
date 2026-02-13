@@ -3,7 +3,6 @@ package ben.core.command;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
-import ben.core.ui.Ui;
 import ben.task.Todo;
 
 /**
@@ -27,17 +26,11 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public String executeBase(TaskList tasks, BaseUi ui, Storage storage) {
+    public String execute(TaskList tasks, BaseUi ui, Storage storage) {
         Todo newTask = new Todo(this.todoDescription);
         tasks.addTask(newTask);
 
         String message = ui.showTaskAddedMessageBase(newTask, tasks.getTasksLength());
         return message;
-    }
-
-    @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        String message = this.executeBase(tasks, ui, storage);
-        ui.showMessage(message);
     }
 }

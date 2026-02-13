@@ -3,7 +3,6 @@ package ben.core.command;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
-import ben.core.ui.Ui;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyNotDoneException;
 
@@ -28,7 +27,7 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public String executeBase(TaskList tasks, BaseUi ui, Storage storage)
+    public String execute(TaskList tasks, BaseUi ui, Storage storage)
             throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
         // Get index
         int index = indexNumber - 1;
@@ -41,12 +40,5 @@ public class UnmarkCommand extends Command {
         messageBuilder.append("  " + tasks.getTask(index));
 
         return messageBuilder.toString();
-    }
-
-    @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)
-            throws BenMarkAlreadyNotDoneException, BenIndexOutOfRangeException {
-        String message = this.executeBase(tasks, ui, storage);
-        ui.showMessage(message);
     }
 }

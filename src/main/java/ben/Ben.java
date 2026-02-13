@@ -52,7 +52,7 @@ public class Ben {
     public String getResponse(String userInput) {
         try {
             Command c = Parser.parse(userInput);
-            String responseMessage = c.executeBase(this.tasks, this.ui, this.storage);
+            String responseMessage = c.execute(this.tasks, this.ui, this.storage);
             String tasksRepresentation = this.tasks.getTasksRepresentation();
             this.storage.overwriteRawData(tasksRepresentation);
             return ui.showMessageBase(responseMessage);

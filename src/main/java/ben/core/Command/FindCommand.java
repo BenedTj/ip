@@ -6,7 +6,6 @@ import java.util.List;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.ui.BaseUi;
-import ben.core.ui.Ui;
 import ben.task.Task;
 
 /**
@@ -28,7 +27,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public String executeBase(TaskList tasks, BaseUi ui, Storage storage) {
+    public String execute(TaskList tasks, BaseUi ui, Storage storage) {
         // Get array list of tasks
         ArrayList<Task> taskAsArrayList = tasks.getTasks();
 
@@ -51,11 +50,5 @@ public class FindCommand extends Command {
         }
 
         return messageBuilder.toString();
-    }
-
-    @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        String message = this.executeBase(tasks, ui, storage);
-        ui.showMessage(message);
     }
 }
