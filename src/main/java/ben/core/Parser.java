@@ -25,7 +25,7 @@ import ben.exception.BenMissingParameterException;
  * The class that handles the user input parsing functionality.
  */
 public class Parser {
-    private static DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
     /**
      * Returns a ByeCommand object based on parameters.

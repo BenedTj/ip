@@ -95,7 +95,7 @@ public class Storage {
      *
      * @param content The content to translate
      *                into an array list of Task objects.
-     * @ return The tasks loaded up from the saved file.
+     * @return The tasks loaded up from the saved file.
      * @throws BenInvalidFileFormatException If one of the lines in the content
      *                                       has an incorrect format.
      */
