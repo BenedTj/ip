@@ -10,6 +10,7 @@ import ben.core.command.DeadlineCommand;
 import ben.core.command.DeleteCommand;
 import ben.core.command.EventCommand;
 import ben.core.command.FindCommand;
+import ben.core.command.FixedTaskCommand;
 import ben.core.command.ListCommand;
 import ben.core.command.MarkCommand;
 import ben.core.command.TodoCommand;
@@ -159,6 +160,59 @@ public class Parser {
         LocalDateTime datetimeBy = LocalDateTime.parse(deadlineBy, DATETIME_FORMATTER);
 
         return new DeadlineCommand(deadlineDescription, datetimeBy);
+    }
+
+    /**
+     * Returns a FixedTaskCommand object based on parameters.
+     *
+     * @param commandParameters the separated parameters of the command.
+     * @return A FixedTaskCommand object with the data given.
+     */
+    private static FixedTaskCommand parseFixedTaskCommand(String[] commandParameters)
+            throws BenEmptyParameterValueException,
+            BenMissingParameterException {
+        int commandParametersLength = commandParameters.length;
+
+        // Throw an exception if there is no description
+        if (commandParametersLength <= 1) {
+            throw new BenEmptyParameterValueException("description", "fixed task");
+        }
+
+        Integer byIndex = null;
+
+        // Obtain the description of the Fixed Task
+        StringBuilder fixedTaskDescriptionBuilder = new StringBuilder(commandParameters[1]);
+        for (int i = 2; i < commandParametersLength; i++) {
+            // Stop once "/for" is encountered
+            if (commandParameters[i].equals("/for")) {
+                byIndex = i;
+                break;
+            }
+
+            fixedTaskDescriptionBuilder.append(" ");
+            fixedTaskDescriptionBuilder.append(commandParameters[i]);
+        }
+        String deadlineDescription = fixedTaskDescriptionBuilder.toString();
+
+        // Throw an exception if there is no "/for"
+        if (byIndex == null) {
+            throw new BenMissingParameterException("/for");
+        }
+
+        // Throw an exception if there is no value for "/for"
+        if (byIndex + 1 >= commandParametersLength) {
+            throw new BenEmptyParameterValueException("/for", "fixed task");
+        }
+
+        // Obtain the deadline of the Fixed task
+        StringBuilder fixedTaskForBuilder = new StringBuilder(commandParameters[byIndex + 1]);
+        for (int i = byIndex + 2; i < commandParametersLength; i++) {
+            fixedTaskForBuilder.append(" ");
+            fixedTaskForBuilder.append(commandParameters[i]);
+        }
+        String fixedTaskFor = fixedTaskForBuilder.toString();
+
+        return new FixedTaskCommand(deadlineDescription, fixedTaskFor);
     }
 
     /**
@@ -326,6 +380,8 @@ public class Parser {
                 return parseUnmarkCommand(commandParameters);
             } else if (command.equals("todo")) {
                 return parseTodoCommand(commandParameters);
+            } else if (command.equals("fixedtask")) {
+                return parseFixedTaskCommand(commandParameters);
             } else if (command.equals("deadline")) {
                 return parseDeadlineCommand(commandParameters);
             } else if (command.equals("event")) {
