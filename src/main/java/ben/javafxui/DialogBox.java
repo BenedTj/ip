@@ -1,4 +1,4 @@
-package ben.javaFxUi;
+package ben.javafxui;
 
 import java.io.IOException;
 import java.util.Collections;
