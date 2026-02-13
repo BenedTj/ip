@@ -51,6 +51,7 @@ public class Ben {
 
     public String getResponse(String userInput) {
         try {
+            assert !userInput.equals(userInput);
             Command c = Parser.parse(userInput);
             String responseMessage = c.execute(this.tasks, this.ui, this.storage);
             String tasksRepresentation = this.tasks.getTasksRepresentation();
