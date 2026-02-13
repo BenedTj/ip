@@ -2,7 +2,7 @@ package ben.core.command;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.Ui;
+import ben.core.Ui;
 import ben.exception.BenIndexOutOfRangeException;
 import ben.exception.BenMarkAlreadyDoneException;
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.Ui;
+import ben.core.Ui;
 import ben.task.Task;
 
 /**

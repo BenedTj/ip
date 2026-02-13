@@ -4,7 +4,7 @@ import ben.core.Parser;
 import ben.core.Storage;
 import ben.core.TaskList;
 import ben.core.command.Command;
-import ben.core.ui.Ui;
+import ben.core.Ui;
 import ben.exception.BenException;
 
 /**

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import ben.core.Storage;
 import ben.core.TaskList;
-import ben.core.ui.Ui;
+import ben.core.Ui;
 import ben.task.Deadline;
 /**
  * The class for the deadline command.

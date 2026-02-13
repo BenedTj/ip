@@ -1,4 +1,4 @@
-package ben.core.ui;
+package ben.core;
 
 import ben.exception.BenException;
 import ben.task.Task;
