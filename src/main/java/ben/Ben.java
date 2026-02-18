@@ -49,6 +49,12 @@ public class Ben {
         }
     }
 
+    /**
+     * Returns response for a given userInput.
+     *
+     * @param userInput The user input string.
+     * @return The chatbot response as a string.
+     */
     public String getResponse(String userInput) {
         try {
             assert !userInput.equals(userInput);
