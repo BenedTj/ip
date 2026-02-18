@@ -35,7 +35,7 @@ public class MarkCommand extends Command {
         tasks.markDone(index);
 
         // Build confirmation message
-        StringBuilder messageBuilder = new StringBuilder("Ok, I've marked this task as not done yet:");
+        StringBuilder messageBuilder = new StringBuilder("Nice, I've marked this task as done:");
         messageBuilder.append(System.lineSeparator());
         messageBuilder.append("  " + tasks.getTask(index));
 
