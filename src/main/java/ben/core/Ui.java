@@ -17,7 +17,7 @@ public class Ui {
         // Construct message
         StringBuilder welcomeMessageBuilder = new StringBuilder("Hello! I'm Ben.");
         welcomeMessageBuilder.append(System.lineSeparator());
-        welcomeMessageBuilder.append("What can I do for you?");
+        welcomeMessageBuilder.append("Today is such a nice day! What can I do for you?");
 
         return welcomeMessageBuilder.toString();
     }
