@@ -25,6 +25,7 @@ public class Main extends Application {
             stage.setTitle("Ben");
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setBen(this.ben);
+            fxmlLoader.<MainWindow>getController().showBenWelcomeMessage();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

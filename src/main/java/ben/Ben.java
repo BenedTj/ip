@@ -67,4 +67,13 @@ public class Ben {
             return ui.showBenExceptionBase(e);
         }
     }
+
+    /**
+     * Returns the welcome message for chatbot.
+     *
+     * @return The welcome message as a string.
+     */
+    public String getWelcomeMessage() {
+        return this.ui.showWelcomeBase();
+    }
 }

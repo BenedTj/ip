@@ -53,4 +53,14 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
     }
+
+    /**
+     * Displays the welcome message for the Ben chatbot.
+     */
+    public void showBenWelcomeMessage() {
+        String message = ben.getWelcomeMessage();
+        dialogContainer.getChildren().add(
+                DialogBox.getBenDialog(message, benImage)
+        );
+    }
 }
