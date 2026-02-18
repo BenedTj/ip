@@ -41,7 +41,7 @@ public class Ui {
      */
     public String showTaskAddedMessageBase(Task task, int tasksSize) {
         // Construct message
-        StringBuilder tasksMessageBuilder = new StringBuilder("Got it. I've added this task:");
+        StringBuilder tasksMessageBuilder = new StringBuilder("Ok, I have it right now. I've added this task:");
         tasksMessageBuilder.append(System.lineSeparator());
         tasksMessageBuilder.append(" " + task);
         tasksMessageBuilder.append(System.lineSeparator());
