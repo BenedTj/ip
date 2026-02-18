@@ -15,6 +15,6 @@ public class BenException extends Exception {
 
     @Override
     public String toString() {
-        return "OOPS!!! " + this.getMessage();
+        return "OOPS, I did it again!!! " + this.getMessage();
     }
 }
