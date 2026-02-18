@@ -27,6 +27,7 @@ import ben.exception.BenMissingParameterException;
 public class Parser {
     private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a ByeCommand object based on parameters.
      *
@@ -37,6 +38,7 @@ public class Parser {
         return new ByeCommand();
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a ListCommand object based on parameters.
      *
@@ -47,6 +49,7 @@ public class Parser {
         return new ListCommand();
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a MarkCommand object based on parameters.
      *
@@ -64,6 +67,7 @@ public class Parser {
         }
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a UnmarkCommand object based on parameters.
      *
@@ -81,6 +85,7 @@ public class Parser {
         }
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a TodoCommand object based on parameters.
      *
@@ -106,6 +111,7 @@ public class Parser {
         return new TodoCommand(todoDescription);
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a DeadlineCommand object based on parameters.
      *
@@ -162,6 +168,7 @@ public class Parser {
         return new DeadlineCommand(deadlineDescription, datetimeBy);
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a FixedTaskCommand object based on parameters.
      *
@@ -215,6 +222,7 @@ public class Parser {
         return new FixedTaskCommand(deadlineDescription, fixedTaskFor);
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a EventCommand object based on parameters.
      *
@@ -300,6 +308,7 @@ public class Parser {
         return new EventCommand(eventDescription, dateTimeFrom, dateTimeTo);
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a DeleteCommand object based on parameters.
      *
@@ -318,6 +327,7 @@ public class Parser {
         }
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Returns a FindCommand object based on parameters.
      *
@@ -344,6 +354,7 @@ public class Parser {
         return new FindCommand(findQuery);
     }
 
+    // Solution below inspired by https://github.com/jyc300564/ip/blob/master/src/main/java/shallowseek/Parser.java.
     /**
      * Parses fullCommand and returns the command to be
      * executed in the form of a Command object.
