@@ -9,6 +9,6 @@ public class BenInvalidCommandException extends BenException {
      * with the default message.
      */
     public BenInvalidCommandException() {
-        super("I'm sorry, but I don't know what that means :-(");
+        super("I'm sorry, but I didn't understand. Do you want to try again?");
     }
 }
