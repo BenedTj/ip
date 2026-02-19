@@ -18,6 +18,7 @@ import ben.core.command.UnmarkCommand;
 import ben.exception.BenDatetimeParseException;
 import ben.exception.BenEmptyParameterValueException;
 import ben.exception.BenInvalidCommandException;
+import ben.exception.BenInvalidDateTimeRangeException;
 import ben.exception.BenInvalidParameterException;
 import ben.exception.BenMissingParameterException;
 
@@ -231,7 +232,8 @@ public class Parser {
      */
     private static EventCommand parseEventCommand(String[] commandParameters)
             throws BenEmptyParameterValueException,
-            BenMissingParameterException {
+            BenMissingParameterException,
+            BenInvalidDateTimeRangeException {
         int commandParametersLength = commandParameters.length;
 
         // Throw an exception if there is no description
@@ -305,6 +307,10 @@ public class Parser {
         // Convert eventTo to LocalDateTime
         LocalDateTime dateTimeTo = LocalDateTime.parse(eventTo, DATETIME_FORMATTER);
 
+        if (dateTimeFrom.isAfter(dateTimeTo)) {
+            throw new BenInvalidDateTimeRangeException(dateTimeFrom, dateTimeTo);
+        }
+
         return new EventCommand(eventDescription, dateTimeFrom, dateTimeTo);
     }
 
@@ -367,13 +373,15 @@ public class Parser {
      * @throws BenMissingParameterException If no required parameter was specified.
      * @throws BenInvalidCommandException If the command does not exist.
      * @throws BenDatetimeParseException If the datetime is not in the valid format.
+     * @throws BenInvalidDateTimeRangeException If a datetime range passed is invalid.
      */
     public static Command parse(String fullCommand)
             throws BenInvalidParameterException,
             BenEmptyParameterValueException,
             BenMissingParameterException,
             BenInvalidCommandException,
-            BenDatetimeParseException {
+            BenDatetimeParseException,
+            BenInvalidDateTimeRangeException {
         // Split input into main command and parameters
         String[] commandParameters = fullCommand.split(" ");
 
