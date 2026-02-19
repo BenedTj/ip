@@ -161,3 +161,7 @@ Example: `bye`
 ```
 Bye. Hope to see you again soon!
 ```
+
+## Reuse Credits
+1. The user image (`DaBen.jpg`) - https://th.bing.com/th/id/R.cac3c4718641ec56b4c69aa9bb81bbe6?rik=zm8WK2jI41FDmA&riu=http%3a%2f%2fcwejournal.org%2fimages%2fuser.jpg&ehk=Xw4dm6kMwriboAC3CIzYS8nwwlKexudcNZ4CXsHraBU%3d&risl=&pid=ImgRaw&r=0.
+2. The **Ben** chatbot image (`DaBen.png`) - https://static.simpsonswiki.com/images/b/b3/Sedan_bot.png.
