@@ -15,6 +15,8 @@ public class Ben {
     private TaskList tasks;
     private Ui ui;
 
+    private Command lastCommand;
+
     /**
      * Initializes a Ben object with the
      * default saving file.
@@ -35,6 +37,8 @@ public class Ben {
         this.ui = new Ui();
         this.storage = new Storage(filePath);
         this.tasks = new TaskList();
+
+        this.lastCommand = null;
 
         try {
             // Initialize tasks data and load to tasks
@@ -60,11 +64,25 @@ public class Ben {
             assert !userInput.equals(userInput);
             Command c = Parser.parse(userInput);
             String responseMessage = c.execute(this.tasks, this.ui, this.storage);
+            this.lastCommand = c;
             String tasksRepresentation = this.tasks.getTasksRepresentation();
             this.storage.overwriteRawData(tasksRepresentation);
             return ui.showMessageBase(responseMessage);
         } catch (BenException e) {
             return ui.showBenExceptionBase(e);
+        }
+    }
+
+    /**
+     * Returns whether the program should exit.
+     *
+     * @return The boolean value for whether the program should exit.
+     */
+    public boolean getIsExit() {
+        if (this.lastCommand == null) {
+            return false;
+        } else {
+            return this.lastCommand.isExit();
         }
     }
 

@@ -1,6 +1,7 @@
 package ben.javafxui;
 
 import ben.Ben;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -52,6 +53,10 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getBenDialog(response, benImage)
         );
         userInput.clear();
+
+        if (ben.getIsExit()) {
+            Platform.exit();
+        }
     }
 
     /**
