@@ -2,7 +2,6 @@ package ben;
 
 import java.io.IOException;
 
-import ben.exception.BenException;
 import ben.javafxui.MainWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
