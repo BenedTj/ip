@@ -56,6 +56,7 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A MarkCommand object with the data given.
+     * @throws BenInvalidParameterException If there is an invalid parameter.
      */
     private static MarkCommand parseMarkCommand(String[] commandParameters) throws BenInvalidParameterException {
         try {
@@ -74,6 +75,7 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A UnmarkCommand object with the data given.
+     * @throws BenInvalidParameterException If there is an invalid parameter.
      */
     private static UnmarkCommand parseUnmarkCommand(String[] commandParameters) throws BenInvalidParameterException {
         try {
@@ -92,6 +94,7 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A TodoCommand object with the data given.
+     * @throws BenEmptyParameterValueException If there is no parameter value specified.
      */
     private static TodoCommand parseTodoCommand(String[] commandParameters) throws BenEmptyParameterValueException {
         int commandParametersLength = commandParameters.length;
@@ -118,6 +121,8 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A DeadlineCommand object with the data given.
+     * @throws BenEmptyParameterValueException If there is no parameter value specified.
+     * @throws BenMissingParameterException If there is no required parameter specified.
      */
     private static DeadlineCommand parseDeadlineCommand(String[] commandParameters)
             throws BenEmptyParameterValueException,
@@ -175,6 +180,8 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A FixedTaskCommand object with the data given.
+     * @throws BenEmptyParameterValueException If there is no parameter value specified.
+     * @throws BenMissingParameterException If there is no required parameter specified.
      */
     private static FixedTaskCommand parseFixedTaskCommand(String[] commandParameters)
             throws BenEmptyParameterValueException,
@@ -229,6 +236,9 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A EventCommand object with the data given.
+     * @throws BenEmptyParameterValueException If there is no parameter value specified.
+     * @throws BenMissingParameterException If there is no required parameter specified.
+     * @throws BenInvalidDateTimeRangeException If a datetime range passed is invalid.
      */
     private static EventCommand parseEventCommand(String[] commandParameters)
             throws BenEmptyParameterValueException,
@@ -320,6 +330,7 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A DeleteCommand object with the data given.
+     * @throws BenInvalidParameterException If there is an invalid parameter.
      */
     private static DeleteCommand parseDeleteCommand(String[] commandParameters)
             throws BenInvalidParameterException {
@@ -339,6 +350,7 @@ public class Parser {
      *
      * @param commandParameters the separated parameters of the command.
      * @return A FindCommand object with the data given.
+     * @throws BenEmptyParameterValueException If there is no parameter value specified.
      */
     private static FindCommand parseFindCommand(String[] commandParameters)
             throws BenEmptyParameterValueException {
