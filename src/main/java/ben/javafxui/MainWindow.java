@@ -1,6 +1,7 @@
 package ben.javafxui;
 
 import ben.Ben;
+import ben.exception.BenException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,7 +34,9 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Ben instance */
+    /**
+     * Injects the Ben instance and displays
+     */
     public void setBen(Ben b) {
         this.ben = b;
     }
@@ -64,6 +67,16 @@ public class MainWindow extends AnchorPane {
      */
     public void showBenWelcomeMessage() {
         String message = ben.getWelcomeMessage();
+        dialogContainer.getChildren().add(
+                DialogBox.getBenDialog(message, benImage)
+        );
+    }
+
+    /**
+     * Displays an error message for the Ben chatbot.
+     */
+    public void showBenExceptionMessage(BenException benException) {
+        String message = benException.toString();
         dialogContainer.getChildren().add(
                 DialogBox.getBenDialog(message, benImage)
         );

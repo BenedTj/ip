@@ -16,6 +16,7 @@ public class Ben {
     private Ui ui;
 
     private Command lastCommand;
+    private BenException startupException;
 
     /**
      * Initializes a Ben object with the
@@ -39,6 +40,7 @@ public class Ben {
         this.tasks = new TaskList();
 
         this.lastCommand = null;
+        this.startupException = null;
 
         try {
             // Initialize tasks data and load to tasks
@@ -47,9 +49,10 @@ public class Ben {
                 tasks = new TaskList(this.storage.loadSavedTasks(fileContent));
             }
         } catch (BenException e) {
-            // If an exception is thrown, fallback to an empty tasks.
-            ui.showBenExceptionBase(e);
+            // If an exception is thrown, fallback to an empty tasks
             tasks = new TaskList();
+
+            this.startupException = e;
         }
     }
 
@@ -96,5 +99,14 @@ public class Ben {
      */
     public String getWelcomeMessage() {
         return this.ui.showWelcomeBase();
+    }
+
+    /**
+     * Returns the startup exception that is a BenException.
+     *
+     * @return the startup exception.
+     */
+    public BenException getStartupException() {
+        return this.startupException;
     }
 }

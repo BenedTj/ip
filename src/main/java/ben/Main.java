@@ -2,6 +2,7 @@ package ben;
 
 import java.io.IOException;
 
+import ben.exception.BenException;
 import ben.javafxui.MainWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,10 @@ public class Main extends Application {
             stage.setTitle("Ben");
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setBen(this.ben);
+            if (this.ben.getStartupException() != null) {
+                // Display startup exception if there is
+                fxmlLoader.<MainWindow>getController().showBenExceptionMessage(this.ben.getStartupException());
+            }
             fxmlLoader.<MainWindow>getController().showBenWelcomeMessage();
             stage.show();
         } catch (IOException e) {
