@@ -376,7 +376,6 @@ public class Parser {
             BenDatetimeParseException {
         // Split input into main command and parameters
         String[] commandParameters = fullCommand.split(" ");
-        int commandParametersLength = commandParameters.length;
 
         // Get main command
         String command = commandParameters[0];
