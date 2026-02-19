@@ -150,13 +150,13 @@ Ok, I've marked this task as done yet:
 
 ## Saying bye to **Ben**
 
-**Ben** sends a goodbye message to the user.
+**Ben** sends a goodbye message to the user and exits the program.
 
 An example of this is when the user wants to leave.
 
 Example: `bye`
 
-**Ben** should send a goodbye message to the user.
+**Ben** should send a goodbye message to the user and exits the program.
 
 ```
 Bye. Hope to see you again soon!
