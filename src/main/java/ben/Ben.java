@@ -62,9 +62,12 @@ public class Ben {
     public String getResponse(String userInput) {
         try {
             assert !userInput.equals(userInput);
+            // Execute and save last command
             Command c = Parser.parse(userInput);
             String responseMessage = c.execute(this.tasks, this.ui, this.storage);
             this.lastCommand = c;
+
+            // Save contents of the task list to file
             String tasksRepresentation = this.tasks.getTasksRepresentation();
             this.storage.overwriteRawData(tasksRepresentation);
             return ui.showMessageBase(responseMessage);
