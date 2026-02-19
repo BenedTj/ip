@@ -1,6 +1,8 @@
 package ben.exception;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * The class that represents a BenException for an invalid DateTime range.
@@ -23,6 +25,10 @@ public class BenInvalidDateTimeRangeException extends BenException {
      * @param endDateTime The ending DateTime value for the range.
      */
     public BenInvalidDateTimeRangeException(LocalDateTime beginDateTime, LocalDateTime endDateTime) {
-        super("The DateTime " + beginDateTime + " must be before " + endDateTime + ".");
+        super("The DateTime "
+                + beginDateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm", Locale.ENGLISH))
+                + " must be before "
+                + endDateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm", Locale.ENGLISH))
+                + ".");
     }
 }
