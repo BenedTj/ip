@@ -2,6 +2,7 @@ package ben.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * Class to represent tasks that need to start and end at specific dates/time.
@@ -56,7 +57,7 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: "
-                + this.from.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm")) + " to: "
-                + this.to.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm")) + ")";
+                + this.from.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm", Locale.ENGLISH)) + " to: "
+                + this.to.format(DateTimeFormatter.ofPattern("MMM d yyyy HHmm", Locale.ENGLISH)) + ")";
     }
 }
