@@ -50,29 +50,30 @@ public class Task {
      * @throws BenInvalidFileFormatException If the format of the string is invalid.
      */
     public static Task toTask(String taskRepresentation) throws BenInvalidFileFormatException {
-        String[] sections = taskRepresentation.split("\\|");
+        try {
+            String[] sections = taskRepresentation.split("\\|");
 
-        if (sections.length < 2) {
+            boolean markedDone = sections[1].equals("X");
+
+            if (sections[0].equals("T")) {
+                return new Todo(sections[2], markedDone);
+            } else if (sections[0].equals("D")) {
+                return new Deadline(sections[2], markedDone, LocalDateTime.parse(sections[3]));
+            } else if (sections[0].equals("E")) {
+                return new Event(
+                        sections[2],
+                        markedDone,
+                        LocalDateTime.parse(sections[3]),
+                        LocalDateTime.parse(sections[4])
+                );
+            } else if (sections[0].equals("F")) {
+                return new FixedTask(sections[2], markedDone, sections[3]);
+            }
+        } catch (Exception e) {
             throw new BenInvalidFileFormatException(taskRepresentation);
         }
 
-        boolean markedDone = sections[1].equals("X");
-
-        if (sections[0].equals("T")) {
-            return new Todo(sections[2], markedDone);
-        } else if (sections[0].equals("D")) {
-            return new Deadline(sections[2], markedDone, LocalDateTime.parse(sections[3]));
-        } else if (sections[0].equals("E")) {
-            return new Event(
-                    sections[2],
-                    markedDone,
-                    LocalDateTime.parse(sections[3]),
-                    LocalDateTime.parse(sections[4])
-            );
-        } else if (sections[0].equals("F")) {
-            return new FixedTask(sections[2], markedDone, sections[3]);
-        }
-
+        // Throw an exception by default
         throw new BenInvalidFileFormatException(taskRepresentation);
     }
 
