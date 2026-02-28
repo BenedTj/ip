@@ -41,4 +41,18 @@ public class TaskTest {
             assertEquals(new BenMarkAlreadyNotDoneException().toString(), e.toString());
         }
     }
+
+    @Test
+    public void toTask_validNotDoneTask_success() throws Exception {
+        Task expected = new Todo("Read book", false);
+        Task actual = Task.toTask("T| |Read book");
+        assertEquals(expected.toString(), actual.toString());
+    }
+
+    @Test
+    public void toTask_validDoneTask_success() throws Exception {
+        Task expected = new Todo("Read book", true);
+        Task actual = Task.toTask("T|X|Read book");
+        assertEquals(expected.toString(), actual.toString());
+    }
 }
